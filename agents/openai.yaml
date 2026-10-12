@@ -1,0 +1,4 @@
+interface:
+  display_name: "Ancap Bulletin editing"
+  short_description: "Paper collage videos with consistent motion and audio"
+  default_prompt: "Use $ancap-bulletin-editing to create or edit an Ancap Bulletin video with the channel's paper identity."

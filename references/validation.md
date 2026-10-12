@@ -1,0 +1,11 @@
+# Validation — 2026-10-12
+
+- Paper: all four stock outputs and bounds matched the original Presscut renderer with zero RGBA differences; the original newspaper/background-removal files and material asset are preserved byte for byte.
+- Torn: 11 default phase samples matched Presscut; 40,800 visible placements across all flows, both motions, varied shapes and edge/full-frame positions stayed inside 1920×1080. The only motion adaptation is the documented overflow safeguard.
+- Unfolding/sticker: direct and backward seeks repeat identically; the final texture is exact; all five unfolding origins, centered packet anchoring, crease fade, and transparent frame window passed checks. Sampled images were visually inspected.
+- Outputs: all three WebMs decoded with real transparent/opaque alpha using `libvpx-vp9`, at 1920×1080/24 fps. Fresh transparent odd-sized GIF and no-loop generation passed strict HyperFrames checks. Frozen dependency install and Codex skill validation passed.
+- Integration: strict HyperFrames 0.8.150 checks had zero findings. An actual 24 fps HyperFrames sticker render over a colored background preserved transparency, the classic frame, looping source playback, and the fixed SFX at −24.05 dBTP. Adjacent handoff frames had no geometry jump; average content RGB difference was about 1.53/255 after video encoding.
+- Audio: all five asset hashes, durations, 48 kHz stereo PCM formats and true peaks verified. Waveforms were inspected; audio-input support was unavailable, so subjective ear-audition is not claimed.
+- Independent review: **GPT-6 Astra / ultra**, read-only, reviewed the complete original request, both attached images, uncommitted source, original Presscut logic and rendered evidence. Its duplicate-heading finding was fixed, and sticker SFX timing was aligned to the 34% corner-anchor point. Final review reported no outstanding confirmed P1/P2 issue. The remaining suggestion is listening once alongside narration for subjective sound fit.
+
+Run `pnpm verify` for renderer invariants or `pnpm verify /path/to/generated-folder` to also verify its encoded size, frame rate and actual decoded WebM alpha. Original hand/ball visual workflows remain unchanged; only fixed sound instructions and broken resource paths were added/corrected.

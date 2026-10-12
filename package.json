@@ -1,0 +1,20 @@
+{
+  "name": "ancap-bulletin-editing",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@11.25.0",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "paper": "node scripts/paper.mjs",
+    "transition": "node scripts/transition.mjs",
+    "verify": "node scripts/verify.mjs",
+    "hf": "hyperframes"
+  },
+  "dependencies": {
+    "esbuild": "0.28.2",
+    "gsap": "3.15.0",
+    "hyperframes": "0.8.150",
+    "playwright": "1.64.0"
+  }
+}

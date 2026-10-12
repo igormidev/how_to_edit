@@ -1,41 +1,43 @@
-I'm Igor. You're my agent. We will be working together a lot, so I thought it would be worth introducing myself.
+---
+name: ancap-bulletin-editing
+description: Create and edit Ancap Bulletin YouTube videos with HyperFrames, using the channel's paper collage identity, deterministic paper treatments and transitions, word-timed narration, and consistent audio mastering.
+---
 
-I am a senior flutter/dart developer with years of experience and published projects — that's my background.
-But I want to start a career in youtube as a side project. The channel will mostly be about "anarcho-captalist".
-In my videos, I plan to cover a wide range of topics from an anarcho-capitalist perspective, aiming to explain in simple terms how the free market can solve real-world problems more efficiently than government-run solutions.
+# Ancap Bulletin editing
 
-I wanted to shared some of my editing preferences here so we can be more aligned as we work together.
+Igor is a senior Flutter/Dart developer building a mostly faceless channel about anarcho-capitalism and libertarianism. Explain how free markets can address real-world problems through accessible language, practical examples, and solid arguments. Narration, visuals, and content lead; Igor generally does not appear on camera.
 
-# Editing style
-The name of the channel is "Ancap Bulletin". A channel that advocates for anarcho-capitalism, aiming to explain the ideas of anarcho-capitalism and libertarianism in a simple and accessible way for everyday people, using practical examples and solid arguments to help them visualize what this model could look like in practice.
-Our overall style is a paper/journal-like style.
-This is a, mostly, "dark channel" in the sense that I will not appear on camera, and the focus will be on the content, visuals, and narration rather than my personal presence.
+## Editing style
 
-# Background
-The background of most part of the videos will be a fixed crumbled paper texture background —  a warm off-white blank crumpled paper with subtle fibers and soft shallow crease shadows — giving a consistent and slightly vintage look that complements the paper/journal-like style of the channel. 
-I have 2 variations of this background for the videos; one for horizontal, 1920×1080, 16:9, videos and one for vertical, 1080×1920, 9:16, videos (for tiktok, youtube shorts, instagram reals, etc.).
-So, based on the orientation of the video, you should choose the appropriate background variation.
-- Horizontal: [Horizontal Background video](assets/backgrounds/crumpled-paper-horizontal.mp4)
-- Vertical: [Vertical Background video](assets/backgrounds/crumpled-paper-vertical.mp4)
+Use Presscut's handcrafted paper/newspaper collage identity: warm paper stock, irregular cut edges, subtle crumpled relief, and physical paper motion. This supports the **Bulletin** name. Keep the same treatments and sounds across the channel.
 
-As I said, this will be the background of the vast majority of the video — but sometimes I might ask you explicitly to use a different background or visual element to emphasize a particular point or segment in the video. In such cases, I will provide the necessary assets and instructions for you to follow.
+Use HyperFrames and its relevant installed skills. All paths below resolve **from this skill's folder**, not the current video project's working directory. Copy the needed assets/output folder into the video project; keep its internal relative paths intact. Read [generator usage](references/generators.md) before executing a script; setup is once per installation.
 
-# Images assets
-Sometimes I will provide the assets for the scene that I am describing for you to do, but sometimes I won't and, in that case, you should analyse if you need to seek online for that image or create it yourself with the image generation tool you have built in.
-All of those images in scenes will need to have a good intro transition, that will probably be one of the ones mentioned in "## Transitions"
+## Background
+
+Use the fixed warm off-white crumpled paper with subtle fibers and shallow crease shadows for most scenes. Choose [horizontal, 1920×1080](assets/backgrounds/crumpled-paper-horizontal.mp4) or [vertical, 1080×1920](assets/backgrounds/crumpled-paper-vertical.mp4) according to the video's orientation. Use another background when Igor explicitly requests it.
+
+## Image assets — mandatory paper treatment
+
+Use supplied assets, search online, or generate images as the scene requires. **Before passing ANY still image to ANY intro transition or placing it in a scene, run [scripts/paper.mjs](scripts/paper.mjs). Never skip this treatment merely because the image already has transparency.** It creates the consistent cut-paper edge and crumpled print. Only three exceptions are permitted:
+
+- Igor explicitly requests an untreated image.
+- The asset is a **video or animated GIF**: use a classic paper frame instead; never crumple its playing content.
+- The still image fills the **entire video frame**, rather than being built into the scene.
+
+Fixed treatment: **12 px border, tight crop on, Crumpled Newsprint, 20% crumple depth, 72 px fold size, zero color aging, no cast shadow**. Defaults: cut roughness **80%**, stock **classic**, background removal **false**. Change roughness or stock (`classic | cream | gray | tabloid`) only when requested. Enable `--remove-background` when asked, or when an online asset meant to be isolated actually has a background. Inspect its real alpha; a PNG extension or checkerboard picture does not prove transparency. The local remover handles border-connected flat backdrops; inspect its result and use a suitable removal tool for complex photographic backgrounds.
+
+```sh
+node "$SKILL_ROOT/scripts/paper.mjs" source.png paper.png
+```
+
+**Use the resulting `paper.png`, never the untreated source, as the image supplied to the transition.** Do this once; do not double-filter. Apply preprocessing to the artwork being introduced; use the supplied canonical hand sprites and ball pose references as provided. Embedded videos/GIFs always retain a classic paper frame for their entire visible duration, including after the intro. The unfolding/sticker scripts build that frame automatically from the first decoded frame.
 
 # Transitions
-When I introduce a new image or visual element in the video, I will usually specify the type of transition I want to use.
-If I don't specify, you should choose an appropriate transition from the ones mentioned in this section.
-I will describe each transition in detail, providing guidance on when and how to use them effectively in the videos.
-Basically, these transitions are designed to make the introduction of new visual elements in the video more engaging and visually appealing.
-There are some cenarios that I wan't to have mapped, they are:
-- Should use "## Hand transition" when the image asset has a transparent background (like a person or an object image)
-- Should use "## Crumbled paper ball transition" when the image that I will show has background and is not a cropped object
-- Should use "Video "sticker intro" animation" when the asset is a video that is embedded in the scene.
-THe others transitions are more situational and should be used when requested explicitly or when the context of the scene calls for a specific effect.
 
-All the assets that are needed to make the transitions are [here](assets/transitions/)
+Use the requested transition. Otherwise prefer **Hand** for isolated people/objects with genuine source transparency, **Crumbled paper ball** for complete images with backgrounds, and **Sticker intro** for embedded videos/GIFs. Unfolding and Pieces of paper join are situational or explicitly requested. Assets are in [assets/transitions/](assets/transitions/).
+
+**Every use of all five transitions MUST include its fixed local sound at the specified gain.** Do not re-search, substitute, loop, or normalize these files per use. Their very low levels are already baked in; `gain 1` means 0 dB additional gain. Keep the natural sound tail. Read [audio guidance](references/audio.md) for timing, provenance, and channel mixing. Omit sound only on an explicit request for silence.
 
 ## Hand transition
 This is better when we have a image that has a transparent background, I recommend using this transition in that situation.
@@ -56,6 +58,8 @@ Use the closed hand image initially, with the asset and the end of the hand — 
 Use easing functions to make the hand movement appear more natural and fluid. For example, you can use ease-in for the hand entering the scene and ease-out for the hand exiting the scene.
 The switch from one to other should have no animation, it should be instantaneous to maintain the illusion of interaction — just change one image to the other. 
 
+Sound: [hand.wav](assets/transitions/audio/hand.wav), **gain 1**, baked peak −24.05 dBTP; play once at release.
+
 ## Crumbled paper ball
 This is the animation we will be using when we have an image that does not have a transparent background — unlike the hand transition, it is more suitable for images that are complete and not cropped objects.
 The idea is: You'll use your image generation capacity to generate 5 versions of a intermediate frames between a totally crumpled paper ball and the open image asset that I want to show in the scene.
@@ -70,56 +74,67 @@ It is important to maintain consistent lighting and perspective across all frame
 Try to visualize the crumpled paper ball gradually unfolding and revealing the image asset, frame by frame, until the final fully open image is displayed (the parts of the final image that appears in the crumbled version should gradually become visible).
 
 About the first frame of the ball fully crubled, it is here: 
-![Crumpled Paper Ball](how_to_edit/assets/transitions/crumbled_paper_ball/initial-frame-crumpled-paper-ball.png)
+![Crumpled Paper Ball](assets/transitions/crumbled_paper_ball/initial-frame-crumpled-paper-ball.png)
 
 There is a visual reference that you can use as guide for creating the intermediate frames.
-![Crumpled Paper Ball Reference](how_to_edit/assets/transitions/crumbled_paper_ball/crumbled-paper-animation-reference.png)
+![Crumpled Paper Ball Reference](assets/transitions/crumbled_paper_ball/crumbled-paper-animation-reference.png)
 By the way, make sure to generate all frames with the same width, height and aspect ratio to ensure a consistent and smooth animation.
 
 Make the changes consistent across all frames to maintain the illusion of a smooth unfolding animation.
 Distribute the frames evenly over the 2-second animation to maintain a steady pace.
 
-## Video "sticker intro" animation
-When I wan't to add a video (or a gif) INSIDE a scene (that is; the video will not take the hole part of the scene — this is a video playing inside a specific area of the scene with another components).
-Here is my idea: We will get the first frame of the video (or gif) and make a animation of that frame entering the scene like if it were a sticker being placed into the scene.
-It comes from outside the scene and moves into the designated area (initially the image is inverted in the horizontal axis), and, when close to the place it will be placed, it starts to "stick" into the scene like a sticker (starting from the corner top left, and gradually adhering to the rest of the designated area — and fixing the orientation). After the last frame of that animation, you will change that first frame to the actual video (or gif) playing in the designated area (guarantee it is literally in the same area, review carefully to ensure proper alignment so the user does not now this change because, from his point of view, it will look like the video start playing seamlessly and not that we changed a image frame to a video).
-The video should play in loop once it starts, unless I specify otherwise.
-
-## Image/Video "unfolding" animation
-This will not have a specific case of use like the previous animations, but it can be used creatively in various scenarios where you want to show an image or video gradually unfolding to reveal its content.
-When I request this animation of "unfolding", I expect you to use this animation.
-And, about the animation itself: the initial frame will be a totally folded paper, and it will come from outside the scene to the place where it will gradually unfold to reveal the full image or video content.
-This animation can be used for image and video. In the case I am asking you to use it for video, you should get the first frame of the video with ffmpeg and use it as the initial frame for the unfolding animation — once the unfolding animation is complete, you will replace the initial frame with the actual video playing in the designated area, ensuring a seamless transition.
-The video should play in loop once it starts, unless I specify otherwise.
-There is a algoritm to do this in a deterministic way already ("unfolding" animation), so you can use it. But you will still need to do the part were the image comes from outside the scene and then you start to play the animation of it unfolding.
+Sound: [crumpled-ball.wav](assets/transitions/audio/crumpled-ball.wav), **gain 1**, baked peak −26.05 dBTP; play once from reveal start.
 
 ## Pieces of paper join animation
-This will not have a specific case of use like the previous animations, but it can be used creatively in various scenarios where you want to show pieces of an image coming together to form a complete picture.
-When I request this animation of "pieces of paper join", I expect you to use this animation.
-And, about the animation itself: it should depict pieces of shredded paper coming together to form the image.
-There is a algoritm to do this in a deterministic way already. Play that video animation in the designated area where the pieces of paper should come together to form the complete image and the last frame will be the image that you will continue to show in the scene.
+
+Use [scripts/transition.mjs](scripts/transition.mjs) with `torn` on the **paper-treated image**. This preserves Presscut's **Torn Assembly** piece geometry, seed, alpha scheduling, easing, torn stock layers, seam fade, and final hold. All fragments stay inside the frame. Do not recreate its logic by hand. [Port provenance](references/presscut-port.md).
+
+```sh
+node "$SKILL_ROOT/scripts/transition.mjs" torn paper.png scene-torn
+```
+
+Canvas is always **1920×1080**, frame rate always **24 fps**. Default duration **2.8 s**; change `--duration` only for a specific requested timing. `--flow` accepts `center | topToBottom | bottomToTop | leftToRight | rightToLeft`: choose `leftToRight` for left-side artwork, `rightToLeft` for right-side artwork, and `center` for a central/emphasized image. Use vertical flows sparingly, for artwork very high/low or an explicit request. Default `--motion direct` is mandatory unless Igor **explicitly requests Page Riffle** (`--motion pageRiffle`). Use `--box x,y,width,height` for final placement; do not change canvas size or fps.
+
+Sound: [torn-assembly.wav](assets/transitions/audio/torn-assembly.wav), **gain 1**, baked peak −24.05 dBTP; start with the reveal. The generated composition already includes it.
+
+## Image/Video "unfolding" animation
+
+Use [scripts/transition.mjs](scripts/transition.mjs) with `unfold`. Supply the paper-treated image, or the original video/GIF (the script extracts its first frame and adds the classic stock border). The paper enters from outside as one compact folded packet, opens through four columns and two rows, and reaches a flat sheet **with visible fold creases**. The **last 20%** fades those creases out. Default duration **3.2 s**.
+
+```sh
+node "$SKILL_ROOT/scripts/transition.mjs" unfold clip.mp4 scene-unfold --origin center
+```
+
+`--origin bottomLeft | bottomRight | topLeft | topRight | center` chooses the starting corner. `center` keeps the unfolding packet centered on its final occupied area after arrival. Canvas/fps remain 1920×1080/24; optional `--duration` and `--box` control timing and placement. [Motion details](references/motion.md).
+
+For video/GIF, the completed first frame switches seamlessly to playback in **exactly the same content rectangle**, surrounded by the same frame. Loop unless Igor requests otherwise (`--no-loop`). HyperFrames owns playback; never manually call `play()` or seek media. Keep the frame during playback.
+
+Sound: [unfolding.wav](assets/transitions/audio/unfolding.wav), **gain 1**, baked peak −26.05 dBTP; start with the reveal. The generated composition already includes it.
+
+## Video "sticker intro" animation
+
+Use [scripts/transition.mjs](scripts/transition.mjs) with `sticker` for embedded video/GIF. It extracts the first frame and adds the classic paper border. The horizontally mirrored sheet enters from outside, bends through a diagonal curl, and adheres progressively **from the top-left corner**, correcting its orientation as it settles. This must visibly fold, rather than act as a flat wipe or scale reveal. Default duration **2.8 s**.
+
+```sh
+node "$SKILL_ROOT/scripts/transition.mjs" sticker clip.mp4 scene-sticker
+```
+
+Canvas/fps remain 1920×1080/24; `--duration` and `--box` control timing and placement. Once adhered, replace the still with the video/GIF in exactly the same rectangle and keep its classic frame. Loop unless explicitly requested otherwise (`--no-loop`). The generated composition performs this handoff and uses framework-owned playback. [Motion details](references/motion.md).
+
+Sound: [sticker.wav](assets/transitions/audio/sticker.wav), **gain 1**, baked peak −24.05 dBTP; play once at first surface contact. The generated composition already includes it.
 
 # Transcription
-And a crucial details that needs to be in your radar is: TRANSCRIPTION.
-This is ABSOLUTELY MANDATORY when editing EVERY SCENE.
-Every scene will have the voice narration while the visuals are displayed — and you should need to have the transcription in hand in order to know what the scene is about and to accurately sync the audio with the visuals (so the assets will align correctly with the audio of the voice).
-If you don't have the transcription, you won't be able to properly sync the audio with the visuals, which can lead to a confusing or disjointed viewing experience.
-So you will be able to, for example, add a raising sound effect in a moment I am giving tension to a phase, releasing it at the right time to enhance the emotional impact and engagement of the scene. This is one of the examples that demonstrate the importance of having the transcription to guide your audio editing decisions.
-In this device, I have installed and configured “WhisperX” — so use it with model "large-v3-turbo" for generating accurate transcriptions of the voice narration in each scene.
-Have in your context window the timestamps of each word in context, as this will allow you to precisely sync the audio with the visuals and make informed editing decisions.
-IMPORTANT: Have in mind the theme of the video by the script, so you can "fix" transcriptions that you judge that the AI probably misinterpreted since you have the context of the content (you have the big picture, the algorithm of "WhisperX" does not know theme or context).
+
+**Mandatory for every scene:** obtain narration transcription before editing, with word timestamps in context, and align visual entrances, emphasis, music changes, and SFX to those words. Use the configured local **WhisperX, model `large-v3-turbo`**. Check apparent transcription mistakes against the script/topic; preserve the narration's actual wording. Every scene has voice narration while its visuals play.
 
 # Audio
-You'll use Epidemic Sound for sourcing the audio tracks.
-You have access to the MCP of Epidemic Sound, you SHOULD USE IT to search for soundtracks that fit the mood and style of the PART of the video you are creating (e.g., intro, transition, main content, outro — don't just pick 1 music for the entire video).
-It should match also the visual style and pacing of the scene it accompanies to create a cohesive audiovisual experience.
 
-Now, talking a little about sound effects;
-Sound effects should be chosen carefully to enhance the realism and impact of the scenes. Use the MCP of Epidemic Sound to find appropriate sound effects that match the actions and events happening on screen.
-But don't overuse sound effects; they should complement the visuals without becoming distracting — and they are definitely not needed in EVERY scene. 
+Narration comes from **ElevenLabs**. Use Epidemic Sound MCP for scene-appropriate music and additional SFX: choose music for the mood of each part (intro, main content, outro), rather than automatically using one track for the whole video. Use additional effects selectively; they are not needed in every scene. The five transition sounds above are fixed local assets and always accompany their transitions.
 
-Important: Make sure to balance the audio levels between the music, sound effects, and dialogue to ensure clarity and avoid overwhelming the viewer.
-Remember that the dialogue should always be intelligible and not drowned out by the music or sound effects.
+**Across the whole channel, master every finished video to −14 LUFS integrated (±1 LU), maximum true peak ≤−1 dBTP, 48 kHz.** Measure the whole exported mix and verify again after encoding. LUFS is perceived loudness; dBTP is true-peak level, neither is a volume percentage. This is our channel target, not a compulsory YouTube upload specification.
 
-# Hyperframes
-We are using hyperframes to create the videos. There are endless skill files available for hyperframe — so make sure to check if any of them is usefull for the task you are working on (probably one or more skill will use usefull).
+Start narration around **−16 LUFS integrated**, peaks ≤−3 dBTP before mastering. Keep music under speech **18–24 LU quieter** over the same active 3-second window (roughly −34 to −40 LUFS short-term when speech is −16). Start other SFX with peaks **−24 to −18 dBTP** and prefer the quieter end. These are mixing starting points; dialogue must remain clear. Keep neighboring narration phrases consistent, duck music/effects around words, then master the whole mix together. Fixed transition sounds remain at the gains specified above. Read [audio guidance and sources](references/audio.md) before mixing or mastering.
+
+# HyperFrames integration
+
+Use the generated `compositions/transition.html` as a sub-composition, or use its `index.html` to inspect standalone. Copy the whole output directory. Each output includes transparent VP9 WebM, the exact final PNG, media rectangle metadata, a fixed sound track, and video/frame layers when applicable. **Do not use only `animation.webm` and forget the sound or final hold.** Read [generator usage](references/generators.md) for mounting, frame rounding, loop behavior, and alpha verification. Check and inspect the assembled HyperFrames scene before delivery.

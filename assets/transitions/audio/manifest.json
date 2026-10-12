@@ -1,0 +1,151 @@
+{
+  "version": 1,
+  "downloaded_via": "Epidemic Sound MCP DownloadSoundEffect, WAV",
+  "prepared_on": "2026-10-12",
+  "normalization": "Constant baked gain to -24.05 dBTP (hand/torn-assembly/sticker) or -26.05 dBTP (crumpled-ball/unfolding); verified with FFmpeg loudnorm input_tp. Playback gain is 1. Do not normalize these files independently at use time.",
+  "license": "Epidemic Sound assets are subject to the account license and are not licensed as the skill code. Preserve privately; do not redistribute standalone audio publicly.",
+  "assets": [
+    {
+      "transition": "hand",
+      "file": "hand.wav",
+      "epidemic_sound_uuid": "c72c04f8-74e8-4b48-962b-0cf3a7fa03a5",
+      "title": "Paper, Impact, Paper, Bill, Letter, Put Down On Pile Of Others",
+      "source_url": "https://www.epidemicsound.com/sound-effects/tracks/c72c04f8-74e8-4b48-962b-0cf3a7fa03a5/",
+      "source_duration_seconds": 0.471719,
+      "source_sha256": "53c1a27cda0602ce0b3b755c0dfdfe38405a18eb90bbbaf91ca22f8c94190967",
+      "source_range_seconds": [
+        0,
+        0.471719
+      ],
+      "baked_tempo_factor": 1,
+      "baked_fades_seconds": {
+        "in": 0.003,
+        "out": 0.025
+      },
+      "baked_gain_db": -23.63,
+      "duration_seconds": 0.471729,
+      "sample_rate_hz": 48000,
+      "channels": 2,
+      "codec": "pcm_s24le",
+      "measured_true_peak_dbtp": -24.05,
+      "measured_integrated_lufs": -43.65,
+      "playback_gain": 1,
+      "sha256": "42388e9a978e57a1a8e78273e5c4523612253e10d1330990c410d42fe98b6588",
+      "sync_event": "hand release"
+    },
+    {
+      "transition": "crumpled-ball",
+      "file": "crumpled-ball.wav",
+      "epidemic_sound_uuid": "d1f4663e-8391-4eb1-85c8-8168b5da4605",
+      "title": "Crumple, Movement 04",
+      "source_url": "https://www.epidemicsound.com/sound-effects/tracks/d1f4663e-8391-4eb1-85c8-8168b5da4605/",
+      "source_duration_seconds": 3.106625,
+      "source_sha256": "b9c90e16f04af916ffdbada69c92c7cc37d663c73b1d547fc0e2004b550fdffe",
+      "source_range_seconds": [
+        0,
+        3.106625
+      ],
+      "baked_tempo_factor": 1.5533125,
+      "baked_fades_seconds": {
+        "in": 0.003,
+        "out": 0.025
+      },
+      "baked_gain_db": -23.13,
+      "duration_seconds": 2.0,
+      "sample_rate_hz": 48000,
+      "channels": 2,
+      "codec": "pcm_s24le",
+      "measured_true_peak_dbtp": -26.05,
+      "measured_integrated_lufs": -46.98,
+      "playback_gain": 1,
+      "sha256": "37f46262b16384fdd65d7697d76f2f65ae3216e56edfa712faf4bc02b2df6287",
+      "output_trim_seconds": 2.0,
+      "sync_event": "reveal start"
+    },
+    {
+      "transition": "torn-assembly",
+      "file": "torn-assembly.wav",
+      "epidemic_sound_uuid": "e9de43d7-c1eb-45f3-968c-6f0f8ec1b3b5",
+      "title": "Paper, Handle, Ripped Pieces, Small, Handling 01",
+      "source_url": "https://www.epidemicsound.com/sound-effects/tracks/e9de43d7-c1eb-45f3-968c-6f0f8ec1b3b5/",
+      "source_duration_seconds": 2.810844,
+      "source_sha256": "29b7c839e9c12e2924ab5814b088d329bdc114b8705822a764e9a5db76a60c7f",
+      "source_range_seconds": [
+        0,
+        2.810844
+      ],
+      "baked_tempo_factor": 1,
+      "baked_fades_seconds": {
+        "in": 0.003,
+        "out": 0.025
+      },
+      "baked_gain_db": -21.04,
+      "duration_seconds": 2.810854,
+      "sample_rate_hz": 48000,
+      "channels": 2,
+      "codec": "pcm_s24le",
+      "measured_true_peak_dbtp": -24.05,
+      "measured_integrated_lufs": -38.17,
+      "playback_gain": 1,
+      "sha256": "97fb4b290830f76a77523fa513c0df01073217691a498225b67159131a934219",
+      "sync_event": "reveal start"
+    },
+    {
+      "transition": "unfolding",
+      "file": "unfolding.wav",
+      "epidemic_sound_uuid": "a155eee3-8400-4e95-a042-36cd5df7ded1",
+      "title": "Objects, Packaging, Cardboard Sheet, Unfold",
+      "source_url": "https://www.epidemicsound.com/sound-effects/tracks/a155eee3-8400-4e95-a042-36cd5df7ded1/",
+      "source_duration_seconds": 2.527667,
+      "source_sha256": "ea20ae217963a6335736682ce32a79b67aa7fce265572ac1de2b23d66193fbeb",
+      "source_range_seconds": [
+        0,
+        2.527667
+      ],
+      "baked_tempo_factor": 1,
+      "baked_fades_seconds": {
+        "in": 0.003,
+        "out": 0.025
+      },
+      "baked_gain_db": -21.04,
+      "duration_seconds": 2.527667,
+      "sample_rate_hz": 48000,
+      "channels": 2,
+      "codec": "pcm_s24le",
+      "measured_true_peak_dbtp": -26.05,
+      "measured_integrated_lufs": -49.87,
+      "playback_gain": 1,
+      "sha256": "a5534d0b9de131e3d4e4851e35eae1bec4709db447fb73636a351c68969776f3",
+      "sync_event": "reveal start"
+    },
+    {
+      "transition": "sticker",
+      "file": "sticker.wav",
+      "epidemic_sound_uuid": "2b1f022f-d7b4-4a46-8eef-712f3e07b229",
+      "title": "Objects, Tape, Sticker, Stick To Table, Thumb 02",
+      "source_url": "https://www.epidemicsound.com/sound-effects/tracks/2b1f022f-d7b4-4a46-8eef-712f3e07b229/",
+      "source_duration_seconds": 4.628104,
+      "source_sha256": "9b79f6bff7cc2153b11fca8acc3b5e497a4a0be67723bdbbf8cdfce3a148805d",
+      "source_range_seconds": [
+        0,
+        0.55
+      ],
+      "baked_tempo_factor": 1,
+      "baked_fades_seconds": {
+        "in": 0.003,
+        "out": 0.025
+      },
+      "baked_gain_db": -12.11,
+      "duration_seconds": 0.55,
+      "sample_rate_hz": 48000,
+      "channels": 2,
+      "codec": "pcm_s24le",
+      "measured_true_peak_dbtp": -24.05,
+      "measured_integrated_lufs": -40.21,
+      "playback_gain": 1,
+      "sha256": "dde210e56b76e4c61d64c736a495a985b6420b185c1155857adaa19d56c5dd09",
+      "sync_event": "first surface contact"
+    }
+  ],
+  "verification": "Waveform and true-peak/integrated-loudness measurements. Model audio-input support unavailable; no claim of ear-audition."
+}

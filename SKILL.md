@@ -32,6 +32,10 @@ Basically, these transitions are designed to make the introduction of new visual
 There are some cenarios that I wan't to have mapped, they are:
 - Should use "## Hand transition" when the image asset has a transparent background (like a person or an object image)
 - Should use "## Crumbled paper ball transition" when the image that I will show has background and is not a cropped object
+- Should use "Video "sticker intro" animation" when the asset is a video that is embedded in the scene.
+THe others transitions are more situational and should be used when requested explicitly or when the context of the scene calls for a specific effect.
+
+All the assets that are needed to make the transitions are [here](assets/transitions/)
 
 ## Hand transition
 This is better when we have a image that has a transparent background, I recommend using this transition in that situation.
@@ -94,6 +98,28 @@ This will not have a specific case of use like the previous animations, but it c
 When I request this animation of "pieces of paper join", I expect you to use this animation.
 And, about the animation itself: it should depict pieces of shredded paper coming together to form the image.
 There is a algoritm to do this in a deterministic way already. Play that video animation in the designated area where the pieces of paper should come together to form the complete image and the last frame will be the image that you will continue to show in the scene.
+
+# Transcription
+And a crucial details that needs to be in your radar is: TRANSCRIPTION.
+This is ABSOLUTELY MANDATORY when editing EVERY SCENE.
+Every scene will have the voice narration while the visuals are displayed — and you should need to have the transcription in hand in order to know what the scene is about and to accurately sync the audio with the visuals (so the assets will align correctly with the audio of the voice).
+If you don't have the transcription, you won't be able to properly sync the audio with the visuals, which can lead to a confusing or disjointed viewing experience.
+So you will be able to, for example, add a raising sound effect in a moment I am giving tension to a phase, releasing it at the right time to enhance the emotional impact and engagement of the scene. This is one of the examples that demonstrate the importance of having the transcription to guide your audio editing decisions.
+In this device, I have installed and configured “WhisperX” — so use it with model "large-v3-turbo" for generating accurate transcriptions of the voice narration in each scene.
+Have in your context window the timestamps of each word in context, as this will allow you to precisely sync the audio with the visuals and make informed editing decisions.
+IMPORTANT: Have in mind the theme of the video by the script, so you can "fix" transcriptions that you judge that the AI probably misinterpreted since you have the context of the content (you have the big picture, the algorithm of "WhisperX" does not know theme or context).
+
+# Audio
+You'll use Epidemic Sound for sourcing the audio tracks.
+You have access to the MCP of Epidemic Sound, you SHOULD USE IT to search for soundtracks that fit the mood and style of the PART of the video you are creating (e.g., intro, transition, main content, outro — don't just pick 1 music for the entire video).
+It should match also the visual style and pacing of the scene it accompanies to create a cohesive audiovisual experience.
+
+Now, talking a little about sound effects;
+Sound effects should be chosen carefully to enhance the realism and impact of the scenes. Use the MCP of Epidemic Sound to find appropriate sound effects that match the actions and events happening on screen.
+But don't overuse sound effects; they should complement the visuals without becoming distracting — and they are definitely not needed in EVERY scene. 
+
+Important: Make sure to balance the audio levels between the music, sound effects, and dialogue to ensure clarity and avoid overwhelming the viewer.
+Remember that the dialogue should always be intelligible and not drowned out by the music or sound effects.
 
 # Hyperframes
 We are using hyperframes to create the videos. There are endless skill files available for hyperframe — so make sure to check if any of them is usefull for the task you are working on (probably one or more skill will use usefull).

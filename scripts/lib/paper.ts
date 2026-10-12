@@ -1,17 +1,17 @@
-/** Small public adapter around Presscut's original paper and Torn algorithms. */
+/** Small public adapter around the paper and Torn algorithms. */
 import {
   renderNewspaper,
   fitDimensionsToPixelBudget,
   getSourceDimensions,
   type RenderResult,
   type PixelBounds,
-} from "../vendor/presscut/newspaperRenderer";
+} from "../vendor/paper/newspaperRenderer";
 import {
   drawTornAnimation,
   layoutSprite,
   type PreparedAnimationSprite,
-} from "../vendor/presscut/tornRenderer";
-import type { TornAssemblyFlow, TornPieceMotion } from "../vendor/presscut/types";
+} from "../vendor/paper/tornRenderer";
+import type { TornAssemblyFlow, TornPieceMotion } from "../vendor/paper/types";
 
 export const PAPER_STOCKS = Object.freeze({
   classic: "#F6E0C0",
@@ -19,7 +19,7 @@ export const PAPER_STOCKS = Object.freeze({
   gray: "#D8D5C8",
   tabloid: "#D7BA81",
 });
-export const PRESSCUT_SEED = 1873;
+export const PAPER_SEED = 1873;
 export interface PaperOptions {
   roughness?: number;
   stock?: keyof typeof PAPER_STOCKS;
@@ -53,7 +53,7 @@ export async function preparePaperImage(
     borderWidth: 12,
     roughness,
     tightTrim: true,
-    seed: PRESSCUT_SEED,
+    seed: PAPER_SEED,
     imagePaperColor: PAPER_STOCKS[stock],
     borderPaperColor: PAPER_STOCKS[stock],
     alphaThreshold: 24,
@@ -85,7 +85,7 @@ export async function prepareVideoFrame(source: CanvasImageSource): Promise<Prep
     borderWidth: 12,
     roughness: 0.8,
     tightTrim: true,
-    seed: PRESSCUT_SEED,
+    seed: PAPER_SEED,
     paperColor: PAPER_STOCKS.classic,
     texture: { strength: 0.62, fibers: 0.5 },
     oldFilter: false,
@@ -121,7 +121,7 @@ export interface TornConfig {
   duration?: number;
 }
 
-/** Alpha-safe original Presscut Torn assembly on a fixed full-HD canvas. */
+/** Alpha-safe Torn assembly on a fixed full-HD canvas. */
 export function createTornRenderer(canvas: HTMLCanvasElement, config: TornConfig) {
   const { rect, flow = "center", motion = "direct", duration = 2.8 } = config;
   if (!Object.hasOwn(FLOWS, flow)) throw new Error(`Unknown assembly flow: ${flow}`);
@@ -145,7 +145,7 @@ export function createTornRenderer(canvas: HTMLCanvasElement, config: TornConfig
     duration,
     draw(context: CanvasRenderingContext2D, progress: number) {
       const time = Math.min(1, Math.max(0, Number.isFinite(progress) ? progress : 0));
-      drawTornAnimation(context, 1920, 1080, { artwork: sprite, seed: PRESSCUT_SEED }, settings, time, layout);
+      drawTornAnimation(context, 1920, 1080, { artwork: sprite, seed: PAPER_SEED }, settings, time, layout);
     },
   };
 }

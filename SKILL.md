@@ -9,7 +9,7 @@ Igor is a senior Flutter/Dart developer building a mostly faceless channel about
 
 ## Editing style
 
-Use Presscut's handcrafted paper/newspaper collage identity: warm paper stock, irregular cut edges, subtle crumpled relief, and physical paper motion. This supports the **Bulletin** name. Keep the same treatments and sounds across the channel.
+Use a handcrafted paper/newspaper collage identity: warm paper stock, irregular cut edges, subtle crumpled relief, and physical paper motion. This supports the **Bulletin** name. Keep the same treatments and sounds across the channel.
 
 Use HyperFrames and its relevant installed skills. All paths below resolve **from this skill's folder**, not the current video project's working directory. Copy the needed assets/output folder into the video project; keep its internal relative paths intact. Read [generator usage](references/generators.md) before executing a script; setup is once per installation.
 
@@ -87,7 +87,7 @@ Sound: [crumpled-ball.wav](assets/transitions/audio/crumpled-ball.wav), **gain 1
 
 ## Pieces of paper join animation
 
-Use [scripts/transition.mjs](scripts/transition.mjs) with `torn` on the **paper-treated image**. This preserves Presscut's **Torn Assembly** piece geometry, seed, alpha scheduling, easing, torn stock layers, seam fade, and final hold. All fragments stay inside the frame. Do not recreate its logic by hand. [Port provenance](references/presscut-port.md).
+Use [scripts/transition.mjs](scripts/transition.mjs) with `torn` on the **paper-treated image**. This preserves the **Torn Assembly** piece geometry, seed, alpha scheduling, easing, torn stock layers, seam fade, and final hold. All fragments stay inside the frame. Do not recreate its logic by hand. [Implementation details](references/rendering.md).
 
 ```sh
 node "$SKILL_ROOT/scripts/transition.mjs" torn paper.png scene-torn

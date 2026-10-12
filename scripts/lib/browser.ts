@@ -1,4 +1,4 @@
-import { preparePaperImage, prepareVideoFrame, createTornRenderer } from './presscut';
+import { preparePaperImage, prepareVideoFrame, createTornRenderer } from './paper';
 import { createUnfoldingRenderer, createStickerRenderer } from './motion';
 
 const W = 1920, H = 1080;

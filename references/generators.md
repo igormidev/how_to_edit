@@ -1,6 +1,6 @@
 # Deterministic generators
 
-`scripts/` is a standard optional skill resource directory. These thin CLI wrappers share one browser renderer; the larger vendor files preserve Presscut's existing algorithms rather than replacing them. Resolve `SKILL_ROOT` to the directory containing this skill's `SKILL.md`; input and output arguments are relative to your working directory.
+`scripts/` is a standard optional skill resource directory. These thin CLI wrappers share one browser renderer; the larger vendor files preserve the existing rendering algorithms rather than replacing them. Resolve `SKILL_ROOT` to the directory containing this skill's `SKILL.md`; input and output arguments are relative to your working directory.
 
 ## Setup once
 
@@ -12,7 +12,7 @@ pnpm exec playwright install chromium
 pnpm verify
 ```
 
-The lockfile pins dependencies and the Chromium revision. Seed is fixed at 1873. The same source pixels, parameters, pinned renderer/browser and FFmpeg build produce repeatable geometry and frames. Record FFmpeg version for an exact encoding reproduction; file hashes across different encoders/platforms are not promised. No running Presscut server, network asset, or installed copy of that project is required after setup.
+The lockfile pins dependencies and the Chromium revision. Seed is fixed at 1873. The same source pixels, parameters, pinned renderer/browser and FFmpeg build produce repeatable geometry and frames. Record FFmpeg version for an exact encoding reproduction; file hashes across different encoders/platforms are not promised. Everything runs locally after setup; no network media or separate server is required.
 
 ## Prepare a still image
 
@@ -21,7 +21,7 @@ node "$SKILL_ROOT/scripts/paper.mjs" input.png paper.png
 node "$SKILL_ROOT/scripts/paper.mjs" input.jpg paper.png --stock cream --roughness 0.6 --remove-background
 ```
 
-The second command is only for requested overrides/removal. `--stock` is `classic | cream | gray | tabloid`; `--roughness` is 0–1; the removal switch defaults false. All other style values are fixed. Output is transparent PNG plus `.png.json` treatment/bounds/source-hash metadata. Paper sizes are native source pixels after Presscut's original pixel-budget fit and tight crop; 12 px is measured in those pixels, just as in Presscut. Do not apply it twice. The backdrop key removes perimeter-connected flat backgrounds, not arbitrary photographic scenes.
+The second command is only for requested overrides/removal. `--stock` is `classic | cream | gray | tabloid`; `--roughness` is 0–1; the removal switch defaults false. All other style values are fixed. Output is transparent PNG plus `.png.json` treatment/bounds/source-hash metadata. Paper sizes are native source pixels after pixel-budget fitting and tight crop; 12 px is measured in those pixels. Do not apply it twice. The backdrop key removes perimeter-connected flat backgrounds, not arbitrary photographic scenes.
 
 ## Render a transition
 
@@ -31,7 +31,7 @@ node "$SKILL_ROOT/scripts/transition.mjs" unfold paper.png scene-unfold --origin
 node "$SKILL_ROOT/scripts/transition.mjs" sticker video.mp4 scene-sticker --box 950,250,850,650 --hold 8
 ```
 
-Use a **new output directory**. Inputs remain untouched. All transitions use **1920×1080 at 24 fps**, always. The default final fitting box is the original Presscut 56% centered layout; `--box x,y,width,height` specifies a fitting area, preserving the source aspect ratio. The requested box must fit inside the canvas. Torn pieces are contained even during rotation/travel.
+Use a **new output directory**. Inputs remain untouched. All transitions use **1920×1080 at 24 fps**, always. The default final fitting box is a 56% centered layout; `--box x,y,width,height` specifies a fitting area, preserving the source aspect ratio. The requested box must fit inside the canvas. Torn pieces are contained even during rotation/travel.
 
 | Option | Scope / default |
 | --- | --- |

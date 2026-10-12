@@ -1,5 +1,5 @@
-/** Torn-only Canvas renderer extracted from Presscut animationRenderer.ts.
- * See references/presscut-port.md for exact source hashes and containment adaptation.
+/** Torn-only Canvas renderer extracted from the original animationRenderer.ts.
+ * See references/rendering.md for exact source hashes and containment adaptation.
  */
 import type { TornAssemblyFlow, VideoSettings } from "./types";
 import { resolveTornTimeline } from "./tornTimeline";
@@ -818,7 +818,7 @@ function resolveTornPieceRenderPlacement(
     renderedHeight,
   );
   {
-    // Port adaptation: apply Presscut's existing containment helper to both motions.
+    // Port adaptation: apply the existing containment helper to both motions.
     translation = clampTornPieceTranslationToFrame(
       frameWidth,
       frameHeight,

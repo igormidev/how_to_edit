@@ -1,6 +1,6 @@
 # Ancap Bulletin editing
 
-A Codex skill for creating HyperFrames videos with a consistent handcrafted paper/newspaper identity. It includes Presscut's paper treatment and Torn Assembly, deterministic unfolding and sticker intros, existing hand/ball assets, and narration/audio guidance.
+A Codex skill for creating HyperFrames videos with a consistent handcrafted paper/newspaper identity. It includes paper treatment and Torn Assembly, deterministic unfolding and sticker intros, existing hand/ball assets, and narration/audio guidance.
 
 Read [SKILL.md](SKILL.md). For setup and commands, see [generator usage](references/generators.md).
 

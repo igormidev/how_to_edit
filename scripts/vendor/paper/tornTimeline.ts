@@ -1,4 +1,4 @@
-/** Torn-only extraction from Presscut animationTimeline.ts; functions are verbatim. */
+/** Torn-only extraction from the original animationTimeline.ts; functions are verbatim. */
 export interface TornTimeline {
   readonly phase: "blank" | "assemble" | "settle" | "hold";
   readonly visible: boolean;

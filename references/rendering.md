@@ -1,6 +1,6 @@
-# Presscut source provenance
+# Renderer implementation
 
-The portable renderer reuses the original algorithms from `presscut-studio` at commit `40c291e3584dfb6927c087c053de261c503017d4`. No runtime path points to that checkout. The small public adapter is `scripts/lib/presscut.ts`; original processing code lives in `scripts/vendor/presscut/` and its original WebP material in `scripts/vendor/assets/`.
+The portable renderer preserves the established paper and Torn Assembly algorithms. All processing code and material assets are bundled locally. The small public adapter is `scripts/lib/paper.ts`; original processing code lives in `scripts/vendor/paper/` and its original WebP material in `scripts/vendor/assets/`.
 
 | Original source | SHA-256 |
 | --- | --- |

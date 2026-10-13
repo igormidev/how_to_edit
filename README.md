@@ -4,6 +4,8 @@ A Codex skill for creating HyperFrames videos with a consistent handcrafted pape
 
 Read [SKILL.md](SKILL.md). For setup and commands, see [generator usage](references/generators.md).
 
+Text uses bundled Special Elite and Inter Black with individual paper scraps. [Text setup and example](references/text.md).
+
 ![Torn Assembly, unfolding, and sticker motion samples](assets/previews/transitions.jpg)
 
 Every transition uses its fixed, quiet local sound at **gain 1** (the level is baked into the WAV):

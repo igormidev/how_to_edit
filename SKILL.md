@@ -137,12 +137,12 @@ Start narration around **−16 LUFS integrated**, peaks ≤−3 dBTP before mast
 
 # Texts and fonts
 Of course, sometimes I will ask you to add texts to the video.
-The default font will be the Special Elite typeface, which resembles old typewriter text and complements the paper collage aesthetic of the channel. The way I expect the text to appear is like a typewritter, with each character appearing sequentially as if being typed in real-time.
+The default font will be the [Special Elite typeface](assets/fonts/SpecialElite-Regular.ttf), which resembles old typewriter text and complements the paper collage aesthetic of the channel. Use the bundled font at weight 400. The way I expect the text to appear is like a typewritter, with each character appearing sequentially as if being typed in real-time.
 A very common pattern, when using "Special Elite", that I will ask you to do is creating a dialogue like if the user is asking something or two people are talking, and for those cases I want you to make a line detail that points from the text to the character or object speaking in a animation way, ensuring it is clear who is speaking at any given moment.
 
 ## Emphasis text
 This is used to highlight important words or phrases within the text.
-The emphasis text will have the a different font that is the [FONT NAME].
+The emphasis text will have a different font: [Inter Black](assets/fonts/Inter-Variable.ttf), weight 900 and optical size 32. Render it with [scripts/emphasis.mjs](scripts/emphasis.mjs) or the [native lettering helper](assets/text/emphasis.js): heavy upright dark letters on overlapping cream paper scraps, with a different paper position, height, torn edge and rotation behind each letter. Keep these paper variations fixed while the word is visible. Read [text setup and example](references/text.md) for the font loading and word timing.
 When using it, I want to have the 2 patterns that you should follow.
 
 ### Pattern 1: Word-by-Word Emphasis
@@ -155,13 +155,14 @@ You see: there are 2 types of moment in the video: when I create expectation wit
 In both moments of creating expectations I can use the pattern 1 or 2, but for longer phrases, pattern 2 is more suitable since it shows more words at the screen at the same time, not only 1 word — in long phases were the user needs to read and comprehend more information, this approach ensures clarity and maintains viewer engagement (since that in the first pattern the viewer might struggle to keep up with the rapidly changing words, and when we are showing the last word maybe we already "forgot" the beginning of the phrase).
 
 Now, let me explain the composition of a typical scene using these emphasis patterns.
-There will be the scene composition, which typically includes the background, characters or objects, and texts. I want that scene to continue to be appearing but it will be blured (make the blur appear in a fade in effect). And then, with everything of the scene blurred, I will display the emphasized phrase — but I will display word by word (unlike the pattern 1, that was letter by letter) of how it will be, starting in the top left and moving towards the bottom right as the words are spoken. Arrange the words in a way they fit well.
+There will be the scene composition, which typically includes the background, characters or objects, and texts. I want that scene to continue to be appearing but it will be blured (make the blur appear in a fade in effect). And then, with everything of the scene blurred, I will display the emphasized phrase — but I will display word by word, keeping the previous words visible (unlike Pattern 1, which replaces each whole word), starting in the top left and moving towards the bottom right as the words are spoken. Arrange the words in a way they fit well.
+Blur only the existing scene layer; keep the emphasized letters and their paper sharp above it. Each whole word and its paper appear together at that word's timestamp. Plan the full phrase layout before revealing it so earlier words do not move when later words appear.
 Important: you can separate the phase in 2 parts or more if you want to ensure readability and proper pacing for the viewer. So if a phase was, let's say, 18 words, you can show the first 6 words and then the remaining 7 words separately and then 5 in the last part — allways maintaining the unfocused background, so the phase part appears word by word to the end of that part and then it goes to the next one, this way the viewer can comfortably read and comprehend the emphasized phrase.
 Then, so a slide transition to the next scene so the video can continue smoothly, maintaining the viewer's engagement and ensuring a seamless visual experience for the entire video.
 
-## Pattern 1.5: Hibrid approach
-This is a hybrid appraoch of Pattern 1 and Pattern 2.
-This is when I have a longer phase, but the start of it is a hoot-take or a strong hook that needs immediate emphasis. So in this case we can mix the patterns 1 and 2 by, like the pattern 2, blurring the background, and then showing the initital hook word by word in the middle of the screen (like pattern 2, but with the blur background scene instead of a plain background), and once the hook is delivered, continue with the rest of the phrase using the pattern 2 approach. If the hook is in the end of the phase, you can invert the patterns as well.
+## Pattern 1.5: Hybrid approach
+This is a hybrid approach of Pattern 1 and Pattern 2.
+This is when I have a longer phase, but the start of it is a hoot-take or a strong hook that needs immediate emphasis. So in this case we can mix the patterns 1 and 2 by, like the pattern 2, blurring the background, and then showing the initital hook word by word in the middle of the screen (like Pattern 1, but with the blur background scene instead of a plain background), and once the hook is delivered, continue with the rest of the phrase using the pattern 2 approach. If the hook is in the end of the phase, you can invert the patterns as well.
 
 # HyperFrames integration
 

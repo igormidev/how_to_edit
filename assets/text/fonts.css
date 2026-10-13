@@ -1,0 +1,15 @@
+@font-face {
+  font-family: "Bulletin Body";
+  src: url("../fonts/SpecialElite-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: block;
+}
+@font-face {
+  font-family: "Bulletin Emphasis";
+  src: url("../fonts/Inter-Variable.ttf") format("truetype");
+  font-weight: 900;
+  font-style: normal;
+  font-variation-settings: "wght" 900, "opsz" 32;
+  font-display: block;
+}

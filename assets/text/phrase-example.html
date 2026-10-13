@@ -1,0 +1,42 @@
+<template>
+  <style>
+    @font-face{font-family:"Bulletin Body";src:url("../fonts/SpecialElite-Regular.ttf") format("truetype");font-weight:400;font-display:block}
+    @font-face{font-family:"Bulletin Emphasis";src:url("../fonts/Inter-Variable.ttf") format("truetype");font-weight:900;font-variation-settings:"wght" 900,"opsz" 32;font-display:block}
+    #bulletin-phrase{position:relative;width:100%;height:100%;overflow:hidden}
+    #bulletin-phrase-scene{position:absolute;inset:-80px;background:linear-gradient(110deg,#b5a899,#d7b8a1 45%,#302f2d);overflow:hidden}
+    #bulletin-phrase-scene:before{content:"";position:absolute;left:20%;top:12%;width:30%;height:60%;border-radius:48%;background:#c3a188;box-shadow:650px 80px 0 70px #242321}
+    #bulletin-phrase-caption{position:absolute;left:220px;bottom:230px;font:400 68px "Bulletin Body";color:#251d16}
+    #bulletin-phrase-words{position:absolute;inset:0}
+    #bulletin-phrase-words canvas{position:absolute}
+  </style>
+  <div id="bulletin-phrase" data-composition-id="bulletin-phrase" data-start="0" data-duration="5.2" data-width="1920" data-height="1080">
+    <div id="bulletin-phrase-scene" data-layout-allow-overflow><div id="bulletin-phrase-caption" data-layout-allow-occlusion>A question about monopoly</div></div>
+    <div id="bulletin-phrase-words" data-layout-allow-overflow aria-label="to be a government monopoly"></div>
+  </div>
+  <script src="emphasis.js"></script>
+  <script>
+    (async () => {
+      const id="bulletin-phrase", layer=document.getElementById(id+"-words");
+      // Illustrative timings: replace with the actual word timestamps in each scene.
+      const words=[
+        {text:"to",fontSize:208,x:317,y:36,start:.8},
+        {text:"be",fontSize:226,x:720,y:28,start:1.2},
+        {text:"a",fontSize:228,x:1157,y:40,start:1.6},
+        {text:"government",fontSize:153,x:431,y:405,start:1.85},
+        {text:"monopoly",fontSize:176,x:472,y:676,start:2.6}
+      ];
+      const nodes=[];
+      for(let i=0;i<words.length;i++){
+        const word=words[i], node=await BulletinText.createWord(word.text,{fontSize:word.fontSize,seed:1873+i});
+        node.id=id+"-word-"+i;node.style.left=word.x+"px";node.style.top=word.y+"px";
+        layer.append(node);nodes.push(node);
+      }
+      const tl=gsap.timeline({paused:true});
+      tl.fromTo("#"+id+"-scene",{filter:"blur(0px)"},{filter:"blur(32px)",duration:.28,ease:"power1.inOut"},.52);
+      tl.set(nodes,{opacity:0},0);
+      words.forEach((word,i)=>tl.set(nodes[i],{opacity:1},word.start));
+      tl.to(layer,{x:-1920,duration:.4,ease:"power2.inOut"},4.5);
+      window.__timelines[id]=tl;
+    })();
+  </script>
+</template>

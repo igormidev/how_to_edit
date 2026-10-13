@@ -135,6 +135,34 @@ Narration comes from **ElevenLabs**. Use Epidemic Sound MCP for scene-appropriat
 
 Start narration around **−16 LUFS integrated**, peaks ≤−3 dBTP before mastering. Keep music under speech **18–24 LU quieter** over the same active 3-second window (roughly −34 to −40 LUFS short-term when speech is −16). Start other SFX with peaks **−24 to −18 dBTP** and prefer the quieter end. These are mixing starting points; dialogue must remain clear. Keep neighboring narration phrases consistent, duck music/effects around words, then master the whole mix together. Fixed transition sounds remain at the gains specified above. Read [audio guidance and sources](references/audio.md) before mixing or mastering.
 
+# Texts and fonts
+Of course, sometimes I will ask you to add texts to the video.
+The default font will be the Special Elite typeface, which resembles old typewriter text and complements the paper collage aesthetic of the channel. The way I expect the text to appear is like a typewritter, with each character appearing sequentially as if being typed in real-time.
+A very common pattern, when using "Special Elite", that I will ask you to do is creating a dialogue like if the user is asking something or two people are talking, and for those cases I want you to make a line detail that points from the text to the character or object speaking in a animation way, ensuring it is clear who is speaking at any given moment.
+
+## Emphasis text
+This is used to highlight important words or phrases within the text.
+The emphasis text will have the a different font that is the [FONT NAME].
+When using it, I want to have the 2 patterns that you should follow.
+
+### Pattern 1: Word-by-Word Emphasis
+If I ask to show word by word you will immediately change scene to only the background (removing the items in scene previously) and then display VERY BIG in the middle of the screen ONLY THE WORD (nothing else) for the duration of that word in the transcript of the audio.
+So let's say I ended showing a schene and then you detect that the next phase of AI is something like "Who did this?", you can detect that it is a part of the script that I am changing topic/scene and by this you can deduce that you can use this text edit style and show each word in the middle of the screen as it is spoken in the audio (thats why having the transcription and time that the words appear is very important). So the moment the audio says "who", you display "WHO" in the middle of the screen, and then continue with the next word as it is spoken.
+This creates a good sense of anticipation for the viewer, as they can follow along with the text in real-time as it is being spoken.
+
+### Pattern 2: Phrase Emphasis with blur background
+You see: there are 2 types of moment in the video: when I create expectation with a phase of whats comming in the next "section" of the video, and when I deliver the information.
+In both moments of creating expectations I can use the pattern 1 or 2, but for longer phrases, pattern 2 is more suitable since it shows more words at the screen at the same time, not only 1 word — in long phases were the user needs to read and comprehend more information, this approach ensures clarity and maintains viewer engagement (since that in the first pattern the viewer might struggle to keep up with the rapidly changing words, and when we are showing the last word maybe we already "forgot" the beginning of the phrase).
+
+Now, let me explain the composition of a typical scene using these emphasis patterns.
+There will be the scene composition, which typically includes the background, characters or objects, and texts. I want that scene to continue to be appearing but it will be blured (make the blur appear in a fade in effect). And then, with everything of the scene blurred, I will display the emphasized phrase — but I will display word by word (unlike the pattern 1, that was letter by letter) of how it will be, starting in the top left and moving towards the bottom right as the words are spoken. Arrange the words in a way they fit well.
+Important: you can separate the phase in 2 parts or more if you want to ensure readability and proper pacing for the viewer. So if a phase was, let's say, 18 words, you can show the first 6 words and then the remaining 7 words separately and then 5 in the last part — allways maintaining the unfocused background, so the phase part appears word by word to the end of that part and then it goes to the next one, this way the viewer can comfortably read and comprehend the emphasized phrase.
+Then, so a slide transition to the next scene so the video can continue smoothly, maintaining the viewer's engagement and ensuring a seamless visual experience for the entire video.
+
+## Pattern 1.5: Hibrid approach
+This is a hybrid appraoch of Pattern 1 and Pattern 2.
+This is when I have a longer phase, but the start of it is a hoot-take or a strong hook that needs immediate emphasis. So in this case we can mix the patterns 1 and 2 by, like the pattern 2, blurring the background, and then showing the initital hook word by word in the middle of the screen (like pattern 2, but with the blur background scene instead of a plain background), and once the hook is delivered, continue with the rest of the phrase using the pattern 2 approach. If the hook is in the end of the phase, you can invert the patterns as well.
+
 # HyperFrames integration
 
 Use the generated `compositions/transition.html` as a sub-composition, or use its `index.html` to inspect standalone. Copy the whole output directory. Each output includes transparent VP9 WebM, the exact final PNG, media rectangle metadata, a fixed sound track, and video/frame layers when applicable. **Do not use only `animation.webm` and forget the sound or final hold.** Read [generator usage](references/generators.md) for mounting, frame rounding, loop behavior, and alpha verification. Check and inspect the assembled HyperFrames scene before delivery.

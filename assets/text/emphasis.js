@@ -5,19 +5,37 @@
     n = Math.imul(n ^ (n >>> 13), 1274126177);
     return ((n ^ (n >>> 16)) >>> 0) / 4294967295;
   };
+  const softNoise = (x, y, scale, seed) => {
+    const px = x / scale, py = y / scale, ix = Math.floor(px), iy = Math.floor(py);
+    const fade = t => t * t * (3 - 2 * t);
+    const sx = fade(px - ix), sy = fade(py - iy);
+    const top = hash(ix, iy, seed) * (1 - sx) + hash(ix + 1, iy, seed) * sx;
+    const bottom = hash(ix, iy + 1, seed) * (1 - sx) + hash(ix + 1, iy + 1, seed) * sx;
+    return top * (1 - sy) + bottom * sy;
+  };
   const material = document.createElement('canvas');
   material.width = material.height = 256;
   const m = material.getContext('2d'), pixels = m.createImageData(256, 256);
   for (let y = 0; y < 256; y++) for (let x = 0; x < 256; x++) {
-    const noise = hash(x, y, 1873), cloud = hash(x >> 4, y >> 4, 727);
-    const grain = (noise - .5) * 21 + (cloud - .5) * 4 - (noise < .012 ? 28 : 0);
+    const mottles = (softNoise(x, y, 6, 1873) - .5) * 20;
+    const stock = (softNoise(x, y, 19, 727) - .5) * 10;
+    const fibers = (softNoise(x, y, 2.3, 3217) - .5) * 6;
+    const grain = mottles + stock + fibers + (hash(x, y, 913) - .5) * 2;
     const index = (y * 256 + x) * 4;
-    pixels.data[index] = 236 + grain;
-    pixels.data[index + 1] = 232 + grain;
-    pixels.data[index + 2] = 214 + grain;
+    pixels.data[index] = 216 + grain;
+    pixels.data[index + 1] = 203 + grain;
+    pixels.data[index + 2] = 186 + grain;
     pixels.data[index + 3] = 255;
   }
   m.putImageData(pixels, 0, 0);
+  // Sparse soft gray-brown flecks sit within the stock's diffuse mottling.
+  m.strokeStyle = 'rgba(100,86,68,.17)'; m.lineWidth = .8; m.lineCap = 'round';
+  m.shadowColor = 'rgba(100,86,68,.1)'; m.shadowBlur = .35;
+  for (let i = 0; i < 256 * 256 / 220; i++) {
+    const x = hash(i, 1, 5431) * 256, y = hash(i, 2, 5431) * 256;
+    m.beginPath(); m.moveTo(x, y);
+    m.lineTo(x + (hash(i, 3, 5431) - .5) * 2.4, y + hash(i, 4, 5431) * 1.8); m.stroke();
+  }
 
   function scrap(context, width, height, seed) {
     const points = [], rough = Math.min(width, height) * .028;

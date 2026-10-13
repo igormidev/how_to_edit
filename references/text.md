@@ -8,7 +8,7 @@ Normal text uses [Special Elite Regular](../assets/fonts/SpecialElite-Regular.tt
 node "$SKILL_ROOT/scripts/emphasis.mjs" "LIBERDADE" word.png --size 160
 ```
 
-The transparent PNG is rendered at 2× its logical font size for crisp scaling. It already includes the finished paper lettering; do not filter it again. Preserve wording/case unless the chosen emphasis pattern calls for uppercase. The seeded paper height, position, torn edge and rotation vary **per letter**; ink remains upright and sharp. Paper poses stay fixed while the word is visible.
+The transparent PNG is rendered at 2× its logical font size for crisp scaling. It already includes the finished paper lettering; do not filter it again. Preserve wording/case unless the chosen emphasis pattern calls for uppercase. Paper uses a warm beige base **RGB 216, 203, 186 (`#D8CBBA`)**, diffuse mottling and sparse soft gray-brown flecks ([material comparison](../assets/previews/emphasis-material-comparison.jpg)). The seeded paper height, position, torn edge and rotation vary **per letter**; ink remains upright and sharp. Paper poses stay fixed while the word is visible.
 
 For native HyperFrames canvas lettering, load [fonts.css](../assets/text/fonts.css) and [emphasis.js](../assets/text/emphasis.js), then:
 

@@ -70,7 +70,7 @@ node "$SKILL_ROOT/scripts/transition.mjs" drawing paper.png scene-drawing --angl
 
 The eased transition spends **18% entering, 12% completely still at the drawing start, 63% drawing, and 7% exiting**. Zigzag strokes follow visible alpha spans and contours; transparent gaps are crossed with the pen lifted and no reveal. Default duration **4 s**; optional `--duration`, `--box` and `--hold` set scene timing/placement. Canvas/fps stay 1920×1080/24.
 
-Choose `--angle` as an integer **0–360**, clockwise: 0° right, 90° bottom, 180° left, 270° top; 360° equals 0°. **Generally avoid cardinal angles**; choose an oblique entry suited to the image's placement. The script determines the quadrant, flips the hand deterministically, aligns its arm, and keeps the arm cutoff outside the frame. Do not replace this with a rectangular wipe. [Drawing details and example](references/drawing.md).
+Choose `--angle` as an integer **0–360**, clockwise: 0° right, 90° bottom, 180° left, 270° top; 360° equals 0°. **Generally avoid cardinal angles** since it looks unnatural; choose an oblique entry suited to the image's placement. The script determines the quadrant, flips the hand deterministically, aligns its arm, and keeps the arm cutoff outside the frame. Do not replace this with a rectangular wipe. [Drawing details and example](references/drawing.md).
 
 Sound: [drawing.wav](assets/transitions/audio/drawing.wav), **gain 1**, baked peak −26.05 dBTP; play once when drawing starts, at **30%**. The generated composition includes it and keeps its natural tail.
 

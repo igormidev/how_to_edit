@@ -2,7 +2,7 @@
   "version": 1,
   "downloaded_via": "Epidemic Sound MCP DownloadSoundEffect, WAV",
   "prepared_on": "2026-10-12",
-  "normalization": "Constant baked gain to -24.05 dBTP (hand/torn-assembly/sticker) or -26.05 dBTP (crumpled-ball/unfolding); verified with FFmpeg loudnorm input_tp. Playback gain is 1. Do not normalize these files independently at use time.",
+  "normalization": "Constant baked gain to -24.05 dBTP (hand/torn-assembly/sticker) or -26.05 dBTP (crumpled-ball/unfolding/drawing); verified with FFmpeg loudnorm input_tp. Playback gain is 1. Do not normalize these files independently at use time.",
   "license": "Epidemic Sound assets are subject to the account license and are not licensed as the skill code. Preserve privately; do not redistribute standalone audio publicly.",
   "assets": [
     {
@@ -145,6 +145,36 @@
       "playback_gain": 1,
       "sha256": "dde210e56b76e4c61d64c736a495a985b6420b185c1155857adaa19d56c5dd09",
       "sync_event": "first surface contact"
+    },
+    {
+      "transition": "drawing",
+      "file": "drawing.wav",
+      "epidemic_sound_uuid": "3f3579b6-12d3-4954-9ea4-05e61d05cdac",
+      "title": "Ballpoint Pen, Writing, Scribbling On Paper 02",
+      "source_url": "https://www.epidemicsound.com/sound-effects/tracks/3f3579b6-12d3-4954-9ea4-05e61d05cdac/",
+      "source_duration_seconds": 2.364042,
+      "source_sha256": "f816a17fc2ed15a621ad43a722a4afaea6dab877f6fef0889cb7df1e2374acb3",
+      "source_range_seconds": [
+        0,
+        2.364042
+      ],
+      "baked_tempo_factor": 1,
+      "baked_fades_seconds": {
+        "in": 0.003,
+        "out": 0.025
+      },
+      "baked_gain_db": -25.52,
+      "duration_seconds": 2.364042,
+      "sample_rate_hz": 48000,
+      "channels": 2,
+      "codec": "pcm_s24le",
+      "measured_true_peak_dbtp": -26.05,
+      "measured_integrated_lufs": -53.23,
+      "playback_gain": 1,
+      "sha256": "c0cac44390bd9d7a530d161888790bd4db888e355a326df57a3f76f7a5e804f3",
+      "sync_event": "drawing start (30% of visual transition duration)",
+      "sync_offset_ratio": 0.3,
+      "prepared_on": "2026-10-14"
     }
   ],
   "verification": "Waveform and true-peak/integrated-loudness measurements. Model audio-input support unavailable; no claim of ear-audition."

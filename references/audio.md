@@ -19,9 +19,9 @@ Prefer ElevenLabs WAV/PCM when the account offers it; preserve the original and 
 
 Render and listen to dialogue plus music plus SFX, checking a phone speaker and headphones. Normalize the **whole mix together** using a measured two-pass loudness process; use gentle compression/limiting only when necessary. Re-measure the final encoded export: `ffmpeg -i final.mp4 -af loudnorm=I=-14:TP=-1:LRA=11:print_format=json -f null -`. Read **input_i / input_tp**, which describe that file; output values describe the analysis filter's hypothetical processed signal.
 
-## Five mandatory transition sounds
+## Mandatory transition sounds
 
-Play once per transition, on a HyperFrames audio track. Preserve natural tails, add no loop or per-use pitch/rate variation, and keep the same gain even if the visual duration changes. The files are 48 kHz stereo PCM WAV. Start the placement sound at hand release and the sticker sound at initial surface contact; start the other sounds with the corresponding reveal. Sound must accompany every use of these transitions unless the user explicitly requests silence.
+Play once per transition, on a HyperFrames audio track. Preserve natural tails, add no loop or per-use pitch/rate variation, and keep the same gain even if the visual duration changes. The files are 48 kHz stereo PCM WAV. Start the placement sound at hand release and the sticker sound at initial surface contact; start the drawing sound after the hand's arrival and pause, at **30% of its visual transition duration**; start the other sounds with the corresponding reveal. Sound must accompany every use of these transitions unless the user explicitly requests silence.
 
 | Transition | Local file, relative to the skill root | Duration | Baked true peak | Gain |
 | --- | --- | ---: | ---: | ---: |
@@ -30,8 +30,9 @@ Play once per transition, on a HyperFrames audio track. Preserve natural tails, 
 | Pieces of paper join / Torn assembly | [torn-assembly.wav](../assets/transitions/audio/torn-assembly.wav) | 2.811 s | −24.05 dBTP | 1 |
 | Unfolding | [unfolding.wav](../assets/transitions/audio/unfolding.wav) | 2.528 s | −26.05 dBTP | 1 |
 | Sticker intro | [sticker.wav](../assets/transitions/audio/sticker.wav) | 0.550 s | −24.05 dBTP | 1 |
+| Hand drawing (images only) | [drawing.wav](../assets/transitions/audio/drawing.wav) | 2.364 s | −26.05 dBTP | 1 |
 
-The [manifest](../assets/transitions/audio/manifest.json) records Epidemic Sound UUIDs, titles, verified catalog URLs, source ranges, processing, measured levels, and SHA-256 hashes. The ball was prepared once at a faster tempo to fit two seconds; the sticker uses one press from a longer recording. Reuse these prepared files directly; future edits do not require catalog searches.
+The [manifest](../assets/transitions/audio/manifest.json) records Epidemic Sound UUIDs, titles, verified catalog URLs, source ranges, processing, measured levels, and SHA-256 hashes. The ball was prepared once at a faster tempo to fit two seconds; the sticker uses one press from a longer recording. The drawing sound is the full 2.364-second pen recording: keep its natural tail even for shorter transitions by extending the final hold. Reuse these prepared files directly; future edits do not require catalog searches.
 
 Epidemic Sound downloads remain subject to the account's license; keep standalone licensed audio private rather than redistributing it as a public sound library. [Licensing](https://www.epidemicsound.com/how-it-works/music-licensing/), [published license terms](https://www.epidemicsound.com/staticfiles/legacy/20/documents/SingleTrackLicensesV8.pdf).
 

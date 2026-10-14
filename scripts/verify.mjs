@@ -74,7 +74,7 @@ try {
   }, framed);
   assert.equal(hole, 0, 'Frame overlay must have a transparent live-video window');
   const catalog = JSON.parse(await readFile(join(ROOT, 'assets/transitions/audio/manifest.json'), 'utf8'));
-  assert.equal(catalog.assets.length, 5);
+  assert.equal(catalog.assets.length, 6);
   for (const asset of catalog.assets) {
     const bytes = await readFile(join(ROOT, 'assets/transitions/audio', asset.file));
     assert.equal(createHash('sha256').update(bytes).digest('hex'), asset.sha256, `${asset.file} hash`);
@@ -94,5 +94,6 @@ try {
     assert.equal(decoded.stdout.length, 1920 * 1080);
     assert.ok(decoded.stdout.includes(0) && decoded.stdout.includes(255), 'Decoded alpha must have transparent exterior AND opaque artwork');
   }
-  console.log('PASS: repeatable paper; seek-safe motion; exact final frames; five origins and creases; framed media; five sound hashes' + (process.argv[2] ? '; 1080p/24fps decoded WebM alpha' : ''));
+  await import('./verify-drawing.mjs');
+  console.log('PASS: repeatable paper; seek-safe motion; exact final frames; five origins and creases; framed media; six sound hashes' + (process.argv[2] ? '; 1080p/24fps decoded WebM alpha' : ''));
 } finally { await browser.close(); }

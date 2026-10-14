@@ -1,0 +1,19 @@
+{
+  "width": 2012,
+  "height": 781,
+  "tip": {
+    "x": 1979,
+    "y": 582
+  },
+  "armBase": {
+    "x": 0,
+    "y": 503
+  },
+  "tipVerification": "Native pixel-grid inspection at 8x; anchor at the visible terminal nib, excluding near-zero-alpha export fringe. Coordinates use the top-left native canvas origin. The renderer transforms this exact point into the reveal position.",
+  "reference": "../hand_transitions/hand-open.png",
+  "referenceSha256": "6115a25f7a841fae3fd9d59842501a85f457ce5a09639b5258ea08f4351c8435",
+  "sha256": "edce92f04446ee97a28f9a1ff241bd9ce52db411ef6da61ab327e04dd41cdc2b",
+  "generator": "Built-in ImageGen",
+  "normalization": "Removed one bottom row containing only alpha <=1 export noise; no scale, hand geometry or pen coordinates changed.",
+  "prompt": "Use case: photorealistic-natural. Asset type: a reusable transparent hand-and-pen sprite for a paper collage video animation. Image 1 is the STYLE AND HAND IDENTITY reference only: match its light warm skin, photographic detail, age, soft neutral lighting, matte skin texture and straight-on cutout perspective. Create a NEW pose of this same hand gripping a simple matte black fine-tip pen naturally between thumb and index finger, supported by the middle finger. The pen nib must be completely visible, sharply defined and unobstructed, with a single unmistakable pointed contact tip. No line drawn from the pen. Keep the long bare forearm extending all the way to and beyond the LEFT edge as in the reference; the forearm must occupy most of the horizontal image length, so its cutoff can stay outside the video frame. Place the hand toward the RIGHT end, with the pen tip extending beyond the fingers, pointing diagonally down and right. Production canvas MUST have exactly the reference dimensions: 2012 pixels wide by 781 pixels tall, aspect ratio 2012:781. Fit the entire hand, all fingers and pen inside the canvas with transparent clearance at top, right and bottom. Only the arm's left continuation may meet the left edge. True transparent alpha everywhere outside the skin and pen. Do not add paper, desk, background, labels, colored outline, cast shadow, watermark, extra fingers, jewelry, sleeve or other objects. Preserve natural proportions and a long arm."
+}

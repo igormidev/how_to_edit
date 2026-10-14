@@ -37,9 +37,9 @@ node "$SKILL_ROOT/scripts/paper.mjs" source.png paper.png
 
 Use the requested transition. Otherwise prefer **Hand** for isolated people/objects with genuine source transparency, **Crumbled paper ball** for complete images with backgrounds, and **Sticker intro** for embedded videos/GIFs. Unfolding and Pieces of paper join are situational or explicitly requested. Assets are in [assets/transitions/](assets/transitions/).
 
-**Every use of all five transitions MUST include its fixed local sound at the specified gain.** Do not re-search, substitute, loop, or normalize these files per use. Their very low levels are already baked in; `gain 1` means 0 dB additional gain. Keep the natural sound tail. Read [audio guidance](references/audio.md) for timing, provenance, and channel mixing. Omit sound only on an explicit request for silence.
+**Every transition MUST include its fixed local sound at the specified gain.** Do not re-search, substitute, loop, or normalize these files per use. Their very low levels are already baked in; `gain 1` means 0 dB additional gain. Keep the natural sound tail. Read [audio guidance](references/audio.md) for timing, provenance, and channel mixing. Omit sound only on an explicit request for silence.
 
-## Hand transition
+## Hand drag transition
 This is better when we have a image that has a transparent background, I recommend using this transition in that situation.
 For example: I am talking about a real person and that the image of that person that I will use in the video to illustrate the point has a transparent background, the hand transition would be appropriate to introduce that image smoothly.
 Another example is a image of a object, that will probably have a transparent background,  and in that case, the hand transition would be suitable to introduce that object smoothly as well.
@@ -59,6 +59,20 @@ Use easing functions to make the hand movement appear more natural and fluid. Fo
 The switch from one to other should have no animation, it should be instantaneous to maintain the illusion of interaction — just change one image to the other. 
 
 Sound: [hand.wav](assets/transitions/audio/hand.wav), **gain 1**, baked peak −24.05 dBTP; play once at release.
+
+## Hand drawing transition
+
+For **still images only**, use [scripts/transition.mjs](scripts/transition.mjs) with `drawing` on the paper-treated PNG. The [pen-holding hand](assets/transitions/drawing/hand-pen.png) matches the open hand's style and 2012×781 canvas. Its precise native pen tip is **(1979, 582)**, recorded in [sprite metadata](assets/transitions/drawing/hand-pen.json); preserve that anchor.
+
+```sh
+node "$SKILL_ROOT/scripts/transition.mjs" drawing paper.png scene-drawing --angle 225 --duration 4
+```
+
+The eased transition spends **18% entering, 12% completely still at the drawing start, 63% drawing, and 7% exiting**. Zigzag strokes follow visible alpha spans and contours; transparent gaps are crossed with the pen lifted and no reveal. Default duration **4 s**; optional `--duration`, `--box` and `--hold` set scene timing/placement. Canvas/fps stay 1920×1080/24.
+
+Choose `--angle` as an integer **0–360**, clockwise: 0° right, 90° bottom, 180° left, 270° top; 360° equals 0°. **Generally avoid cardinal angles**; choose an oblique entry suited to the image's placement. The script determines the quadrant, flips the hand deterministically, aligns its arm, and keeps the arm cutoff outside the frame. Do not replace this with a rectangular wipe. [Drawing details and example](references/drawing.md).
+
+Sound: [drawing.wav](assets/transitions/audio/drawing.wav), **gain 1**, baked peak −26.05 dBTP; play once when drawing starts, at **30%**. The generated composition includes it and keeps its natural tail.
 
 ## Crumbled paper ball
 This is the animation we will be using when we have an image that does not have a transparent background — unlike the hand transition, it is more suitable for images that are complete and not cropped objects.
@@ -129,7 +143,7 @@ Sound: [sticker.wav](assets/transitions/audio/sticker.wav), **gain 1**, baked pe
 
 # Audio
 
-Narration comes from **ElevenLabs**. Use Epidemic Sound MCP for scene-appropriate music and additional SFX: choose music for the mood of each part (intro, main content, outro), rather than automatically using one track for the whole video. Use additional effects selectively; they are not needed in every scene. The five transition sounds above are fixed local assets and always accompany their transitions.
+Narration comes from **ElevenLabs**. Use Epidemic Sound MCP for scene-appropriate music and additional SFX: choose music for the mood of each part (intro, main content, outro), rather than automatically using one track for the whole video. Use additional effects selectively; they are not needed in every scene. The transition sounds above are fixed local assets and always accompany their transitions.
 
 **Across the whole channel, master every finished video to −14 LUFS integrated (±1 LU), maximum true peak ≤−1 dBTP, 48 kHz.** Measure the whole exported mix and verify again after encoding. LUFS is perceived loudness; dBTP is true-peak level, neither is a volume percentage. This is our channel target, not a compulsory YouTube upload specification.
 
@@ -139,6 +153,12 @@ Start narration around **−16 LUFS integrated**, peaks ≤−3 dBTP before mast
 Of course, sometimes I will ask you to add texts to the video.
 The default font will be the [Special Elite typeface](assets/fonts/SpecialElite-Regular.ttf), which resembles old typewriter text and complements the paper collage aesthetic of the channel. Use the bundled font at weight 400. The way I expect the text to appear is like a typewritter, with each character appearing sequentially as if being typed in real-time.
 A very common pattern, when using "Special Elite", that I will ask you to do is creating a dialogue like if the user is asking something or two people are talking, and for those cases I want you to make a line detail that points from the text to the character or object speaking in a animation way, ensuring it is clear who is speaking at any given moment.
+
+## Magazine font — explicit request only
+
+When Igor asks for the **“magazine font”**, he means **Magazine Mix with Shuffle letter styles**: colored magazine clippings whose individual letter styles change while their positions stay fixed. **Use it only when the user explicitly requests it; never choose it automatically.** Keep Special Elite and the standard emphasis lettering as the usual choices.
+
+Use [scripts/magazine.mjs](scripts/magazine.mjs) with **`--duration` required, no default**: pass the entire time this text will be visible. Shuffle interval defaults to **0.52 s**, configurable with `--interval`; output is transparent at **24 fps**. Read [magazine font setup](references/magazine.md) for the bundled artwork, fallbacks and native helper. These clippings already include their paper; do not apply the image filter again.
 
 ## Emphasis text
 This is used to highlight important words or phrases within the text.

@@ -2,6 +2,8 @@
 
 Normal text uses [Special Elite Regular](../assets/fonts/SpecialElite-Regular.ttf), weight 400. Emphasis uses [Inter Black](../assets/fonts/Inter-Variable.ttf), weight 900 / optical size 32, with paper drawn behind each letter. Copy `assets/fonts/` and `assets/text/` together; preserve the bundled font licenses. Both render locally. The emphasis treatment is a close recreation of the supplied lettering, not an identification of its original typeface. [Side-by-side comparison](../assets/previews/emphasis-comparison.jpg).
 
+The **magazine font** is a separate optional lettering choice: Magazine Mix with per-letter Shuffle letter styles. **Use only when explicitly requested.** Its interval defaults to 0.52 s and its duration must be supplied. Read [magazine setup](magazine.md); copy its additional atlas/font assets only when needed.
+
 ## Render emphasis
 
 ```sh

@@ -9,6 +9,7 @@
     "paper": "node scripts/paper.mjs",
     "transition": "node scripts/transition.mjs",
     "emphasis": "node scripts/emphasis.mjs",
+    "magazine": "node scripts/magazine.mjs",
     "verify": "node scripts/verify.mjs",
     "hf": "hyperframes"
   },

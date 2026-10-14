@@ -1,5 +1,6 @@
 import { preparePaperImage, prepareVideoFrame, createTornRenderer } from './paper';
 import { createUnfoldingRenderer, createStickerRenderer } from './motion';
+import { createDrawingRenderer } from './drawing';
 
 const W = 1920, H = 1080;
 const canvas = document.createElement('canvas');
@@ -35,10 +36,16 @@ function fit(width: number, height: number, box: any) {
   canvas.width = W; canvas.height = H;
   const rect = fit(texture.width, texture.height, config.box);
   const options = { ...config, rect };
-  const renderer = config.kind === 'torn' ? createTornRenderer(texture, options)
+  let hand: HTMLImageElement | undefined;
+  if (config.kind === 'drawing') {
+    hand = new Image(); hand.src = config.handSource; await hand.decode();
+  }
+  const renderer = config.kind === 'drawing' ? createDrawingRenderer(texture, hand!, options)
+    : config.kind === 'torn' ? createTornRenderer(texture, options)
     : config.kind === 'unfold' ? createUnfoldingRenderer(texture, options)
     : createStickerRenderer(texture, options);
   draw = renderer.draw;
+  (window as any).drawing = config.kind === 'drawing' ? renderer : undefined;
   // These dimensions are also used by the live HyperFrames <video> and frame overlay.
   const contentRect = content ? {
     x: rect.x + content.x * rect.width / texture.width,
@@ -47,7 +54,8 @@ function fit(width: number, height: number, box: any) {
     height: content.height * rect.height / texture.height,
   } : null;
   return { rect, contentRect, texture: texture.toDataURL('image/png'),
-    frame: frame?.toDataURL('image/png') ?? null };
+    frame: frame?.toDataURL('image/png') ?? null,
+    drawing: config.kind === 'drawing' ? (renderer as ReturnType<typeof createDrawingRenderer>).metadata : null };
 };
 (window as any).sample = (progress: number) => {
   const ctx = canvas.getContext('2d')!;

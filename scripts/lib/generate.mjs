@@ -17,7 +17,7 @@ const enums = {
 };
 const help = {
   paper: 'node scripts/paper.mjs INPUT OUTPUT.png [--roughness 0.8] [--stock classic] [--remove-background]',
-  transition: 'node scripts/transition.mjs torn|unfold|sticker INPUT OUTPUT_DIR [--duration SECONDS] [--box x,y,width,height] [--flow center] [--motion direct] [--origin center] [--hold 4] [--no-loop]',
+  transition: 'node scripts/transition.mjs torn|unfold|sticker|drawing INPUT OUTPUT_DIR [--duration SECONDS] [--box x,y,width,height] [--flow center] [--motion direct] [--origin center] [--angle 225] [--hold 4] [--no-loop]',
 };
 
 export function command(binary, args) {
@@ -28,7 +28,7 @@ export function command(binary, args) {
 function parse(mode, argv) {
   const positional = [], options = {};
   const allowed = mode === 'paper' ? ['roughness', 'stock', 'remove-background']
-    : ['duration', 'box', 'flow', 'motion', 'origin', 'hold', 'no-loop'];
+    : ['duration', 'box', 'flow', 'motion', 'origin', 'angle', 'hold', 'no-loop'];
   for (let i = 0; i < argv.length; i++) {
     if (!argv[i].startsWith('--')) { positional.push(argv[i]); continue; }
     const key = argv[i].slice(2);
@@ -44,7 +44,7 @@ function parse(mode, argv) {
     if (options[key] !== undefined && !values.includes(options[key])) throw new Error(`--${key}: use ${values.join(', ')}`);
   }
   const kind = mode === 'paper' ? mode : positional.shift();
-  if (!['paper', 'torn', 'unfold', 'sticker'].includes(kind)) throw new Error(help[mode]);
+  if (!['paper', 'torn', 'unfold', 'sticker', 'drawing'].includes(kind)) throw new Error(help[mode]);
   const number = (key, fallback, min, max) => {
     const n = Number(options[key] ?? fallback);
     if (!Number.isFinite(n) || n < min || n > max) throw new Error(`--${key}: expected ${min}..${max}`);
@@ -57,12 +57,16 @@ function parse(mode, argv) {
     throw new Error('--box must fit inside 1920x1080 and be at least 32x32');
   if (kind !== 'torn' && (options.flow || options.motion)) throw new Error('--flow and --motion apply only to torn');
   if (kind !== 'unfold' && options.origin) throw new Error('--origin applies only to unfold');
-  const duration = number('duration', kind === 'unfold' ? 3.2 : 2.8, 0.5, 30);
+  if (kind !== 'drawing' && options.angle !== undefined) throw new Error('--angle applies only to drawing');
+  const angle = number('angle', 225, 0, 360);
+  if (!Number.isInteger(angle)) throw new Error('--angle must be an integer from 0 through 360');
+  if (kind === 'drawing' && options['no-loop']) throw new Error('Drawing takes still images; --no-loop is for video/GIF');
+  const duration = number('duration', kind === 'drawing' ? 4 : kind === 'unfold' ? 3.2 : 2.8, 0.5, 30);
   return { kind, input: resolve(positional[0]), output: resolve(positional[1]),
     roughness: number('roughness', .8, 0, 1), stock: options.stock ?? 'classic',
     removeBackground: !!options['remove-background'], duration,
     flow: options.flow ?? 'center', motion: options.motion ?? 'direct',
-    origin: options.origin ?? 'center', box: { x, y, width, height },
+    origin: options.origin ?? 'center', angle, box: { x, y, width, height },
     hold: number('hold', 4, 1 / FPS, 3600), loop: !options['no-loop'] };
 }
 export async function openRenderer() {
@@ -113,7 +117,7 @@ export async function run(mode, argv) {
     if (config.kind === 'paper' && extname(config.output).toLowerCase() !== '.png') throw new Error('Paper output must be .png');
     if (config.input === config.output) throw new Error('Input and output must differ');
     const media = /\.(mp4|mov|webm|mkv|m4v|avi|gif)$/i.test(config.input);
-    if (media && (config.kind === 'paper' || config.kind === 'torn')) throw new Error('Paper and torn take a still image; video/GIF uses unfold or sticker');
+    if (media && ['paper', 'torn', 'drawing'].includes(config.kind)) throw new Error('Paper, torn and drawing take still images; video/GIF uses unfold or sticker');
     temp = await mkdtemp(join(tmpdir(), 'bulletin-'));
     let imageInput = config.input, sourceMedia = config.input, mediaInfo;
     if (media) {
@@ -131,6 +135,14 @@ export async function run(mode, argv) {
     const mime = /\.jpe?g$/i.test(imageInput) ? 'image/jpeg' : /\.webp$/i.test(imageInput) ? 'image/webp' : 'image/png';
     const opened = await openRenderer(); browser = opened.browser;
     const { page } = opened;
+    let hand;
+    if (config.kind === 'drawing') {
+      hand = JSON.parse(await readFile(join(ROOT, 'assets/transitions/drawing/hand-pen.json'), 'utf8'));
+      const bytes = await readFile(join(ROOT, 'assets/transitions/drawing/hand-pen.png'));
+      if (hash(bytes) !== hand.sha256) throw new Error('Pen hand changed; remap and verify its native tip before rendering');
+      config.handSource = `data:image/png;base64,${bytes.toString('base64')}`;
+      config.tip = hand.tip; config.armBase = hand.armBase;
+    }
     const result = await page.evaluate(c => window.initialize(c), { ...config, media, source: `data:${mime};base64,${imageBytes.toString('base64')}` });
     if (config.kind === 'paper') {
       await mkdir(dirname(config.output), { recursive: true });
@@ -156,7 +168,7 @@ export async function run(mode, argv) {
       '-an', '-c:v', 'libvpx-vp9', '-lossless', '1', '-pix_fmt', 'yuva420p', '-auto-alt-ref', '0',
       '-threads', '4', '-row-mt', '0', '-metadata:s:v:0', 'alpha_mode=1', join(config.output, 'animation.webm')]);
     const catalog = JSON.parse(await readFile(join(ROOT, 'assets/transitions/audio/manifest.json'), 'utf8'));
-    const sound = catalog.assets.find(asset => asset.transition === ({ torn: 'torn-assembly', unfold: 'unfolding', sticker: 'sticker' }[config.kind]));
+    const sound = catalog.assets.find(asset => asset.transition === ({ torn: 'torn-assembly', unfold: 'unfolding', sticker: 'sticker', drawing: 'drawing' }[config.kind]));
     if (!sound) throw new Error(`Missing fixed sound for ${config.kind}`);
     await copyFile(join(ROOT, 'assets/transitions/audio', sound.file), join(config.output, 'sound.wav'));
     await copyFile(join(ROOT, 'node_modules/gsap/dist/gsap.min.js'), join(config.output, 'gsap.min.js'));
@@ -169,11 +181,12 @@ export async function run(mode, argv) {
       mediaRecord = { file, loop: config.loop, originalDuration: Number(mediaInfo.format.duration), audioMuted: true };
     }
     // The mirrored-to-curled arrival finishes at 34%; top-left is anchored then.
-    const soundOffset = (config.kind === 'sticker' ? .34 : 0) * animationDuration;
+    const soundOffset = (config.kind === 'sticker' ? .34 : config.kind === 'drawing' ? .30 : 0) * animationDuration;
     const manifest = { kind: config.kind, width: WIDTH, height: HEIGHT, fps: FPS, frames,
       requestedDuration: config.duration, animationDuration, requestedHold: config.hold,
       sceneDuration: Math.max(animationDuration + config.hold, soundOffset + sound.duration_seconds),
       rect: result.rect, contentRect: result.contentRect, flow: config.flow, motion: config.motion, origin: config.origin,
+      ...(result.drawing ? { drawing: { ...result.drawing, handSha256: hand.sha256 } } : {}),
       inputSha256: hash(await readFile(config.input)), chromium: browser.version(),
       media: mediaRecord, sound: { ...sound, duration: sound.duration_seconds,
         gain: sound.playback_gain, offset: soundOffset } };

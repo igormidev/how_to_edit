@@ -38,22 +38,32 @@
   }
 
   function scrap(context, width, height, seed) {
-    const points = [], rough = Math.min(width, height) * .028;
+    const points = [], size = Math.min(width, height), rough = size * .035;
     const corners = [[0, 0], [width, 0], [width, height], [0, height]];
     for (let side = 0; side < 4; side++) {
       const [x0, y0] = corners[side], [x1, y1] = corners[(side + 1) % 4];
-      const length = Math.hypot(x1 - x0, y1 - y0), count = Math.max(8, Math.ceil(length / 2.2));
-      for (let i = 0; i < count; i++) {
-        const t = i / count, offset = (hash(i, side, seed) - .35) * rough;
+      const length = Math.hypot(x1 - x0, y1 - y0);
+      for (let distance = 0, i = 0; distance < length; i++) {
+        const t = distance / length;
+        const drift = (softNoise(distance, side * 31, size * .1, seed) - .5) * rough * 1.3;
+        const jagged = (hash(i, side, seed) - .5) * rough * .6;
+        const bite = hash(i, side + 9, seed) < .1 ? rough * (.5 + hash(i, side + 13, seed) * .4) : 0;
+        const offset = Math.max(-rough * .85, Math.min(rough * .9, drift + jagged + bite));
         points.push([x0 + (x1 - x0) * t - (y1 - y0) / length * offset,
           y0 + (y1 - y0) * t + (x1 - x0) / length * offset]);
+        distance += size * (.011 + hash(i, side + 5, seed) * .023);
       }
     }
     context.beginPath();
     points.forEach(([x, y], i) => i ? context.lineTo(x, y) : context.moveTo(x, y));
-    context.closePath(); context.clip();
+    context.closePath();
     context.fillStyle = context.createPattern(material, 'repeat');
-    context.fillRect(-rough, -rough, width + rough * 2, height + rough * 2);
+    // A faint contact shadow stays on existing scraps, leaving the exterior transparent.
+    context.save(); context.globalCompositeOperation = 'source-atop';
+    context.shadowColor = 'rgba(36,28,18,.1)'; context.shadowBlur = size * .024;
+    context.shadowOffsetX = size * .006; context.shadowOffsetY = size * .016;
+    context.fill(); context.restore();
+    context.fill(); context.clip();
     // Fine fibers belong to the stock, never to the ink or the canvas exterior.
     context.lineWidth = .34; context.strokeStyle = 'rgba(62,55,36,.12)';
     for (let i = 0; i < width * height / 38; i++) {
@@ -90,7 +100,7 @@
       const x = probe.measureText(prefix + character).width - advance; prefix += character;
       if (/\s/.test(character)) continue;
       const pieceSeed = (seed ^ Math.imul(i + 1, 1597334677)) >>> 0;
-      let paperWidth = advance + fontSize * (.20 + hash(i, 9, seed) * .08);
+      let paperWidth = (advance + fontSize * (.20 + hash(i, 9, seed) * .08)) * .88;
       let h = paperHeight * (.86 + hash(i, 10, seed) * .26);
       const shiftX = (hash(i, 5, seed) - .5) * fontSize * .075;
       const shiftY = (hash(i, 6, seed) - .5) * fontSize * .30;

@@ -3,3 +3,6 @@ node_modules/
 .thumbnails/
 renders/
 validation/
+
+# Large ProRes alpha delivery is generated locally.
+/deliverables/*-transparent.mov

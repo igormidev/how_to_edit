@@ -4,7 +4,7 @@
 
 ## Deliverable
 
-`deliverables/united-states-to-anarcho-capitalism.mp4` is the H.264 delivery file. `index.html` plus `compositions/us-map.html` form the editable HyperFrames project. The video is a silent insert intended for the channel's narration/timeline.
+`deliverables/united-states-to-anarcho-capitalism-transparent.mov` is the current transparent Apple ProRes 4444 delivery for Filmora. Import it and put it on a video track above your scene. The alpha channel preserves the empty background and antialiased edges. The original paper-background H.264 export remains at `deliverables/united-states-to-anarcho-capitalism.mp4`. `index.html` plus `compositions/us-map.html` form the editable HyperFrames project. The video is a silent insert intended for the channel's narration/timeline.
 
 ## Sources and interpretation
 
@@ -24,9 +24,9 @@ npm ci
 npm run build
 npm run check
 npm run dev
-npm run render
+npm run render:transparent
 ```
 
-HyperFrames is pinned to 0.8.198 for this project. Local GSAP is 3.15.0 and D3 Geo is 3.1.1. Rendering does not fetch map data or fonts. The paper background and typefaces are copied from the existing channel assets. `scripts/build.mjs` owns the generated scene HTML: change layout, timing and palette there before rebuilding.
+HyperFrames is pinned to 0.8.198 for this project. Local GSAP is 3.15.0 and D3 Geo is 3.1.1. Rendering does not fetch map data or fonts. The typefaces are copied from the existing channel assets. The paper background is no longer placed in the composition; its copied asset remains for the original version. `scripts/build.mjs` owns the generated scene HTML: change layout, timing and palette there before rebuilding.
 
 To reconstruct the geographic and election data, install `pyshp==3.1.6` and `pypdf==6.21.2` in a temporary Python environment and run `assets/data/prepare_data.py`; consult its header for the exact invocation and source filenames.

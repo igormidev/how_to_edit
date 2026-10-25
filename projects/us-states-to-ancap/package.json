@@ -6,7 +6,10 @@
     "build": "node scripts/build.mjs",
     "dev": "npx --yes hyperframes@0.8.198 preview",
     "check": "npx --yes hyperframes@0.8.198 check",
-    "render": "npx --yes hyperframes@0.8.198 render --fps 24 --quality delivery --output deliverables/united-states-to-anarcho-capitalism.mp4"
+    "render": "npm run render:transparent",
+    "render:transparent": "npx --yes hyperframes@0.8.198 render --format mov --fps 24 --quality delivery --output deliverables/united-states-to-anarcho-capitalism-transparent.mov"
   },
-  "dependencies": { "d3-geo": "3.1.1" }
+  "dependencies": {
+    "d3-geo": "3.1.1"
+  }
 }

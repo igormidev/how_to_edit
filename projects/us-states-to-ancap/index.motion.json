@@ -1,0 +1,13 @@
+{
+  "duration": 12,
+  "assertions": [
+    { "kind": "appearsBy", "selector": "#map-states", "bySec": 1.6 },
+    { "kind": "appearsBy", "selector": "#map-left", "bySec": 1 },
+    { "kind": "appearsBy", "selector": "#map-right", "bySec": 1 },
+    { "kind": "appearsBy", "selector": "#map-ancap", "bySec": 5.3 },
+    { "kind": "before", "a": "#map-left", "b": "#map-ancap" },
+    { "kind": "staysInFrame", "selector": "#map-left" },
+    { "kind": "staysInFrame", "selector": "#map-right" },
+    { "kind": "staysInFrame", "selector": "#map-ancap" }
+  ]
+}

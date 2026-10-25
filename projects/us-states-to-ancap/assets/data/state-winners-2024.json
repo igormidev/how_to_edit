@@ -1,0 +1,528 @@
+{
+  "election_date": "2024-11-05",
+  "basis": "Statewide presidential popular-vote winner, as published by the Federal Election Commission from state election offices.",
+  "interpretation": "Democratic and Republican are an explicit electoral proxy for left-leaning and right-leaning. This is not a claim about every resident or every policy position.",
+  "maine_nebraska": "Maine is Democratic and Nebraska Republican by statewide vote. Congressional-district electoral-vote splits are intentionally not used for whole-state colors.",
+  "source": "https://www.fec.gov/documents/5644/2024presgeresults.pdf",
+  "source_pages": {
+    "harris_popular_votes": 3,
+    "trump_popular_votes": 5
+  },
+  "state_counts": {
+    "Democratic": 19,
+    "Republican": 31
+  },
+  "district_of_columbia": "Included separately as a federal district; not counted among the 50 states.",
+  "states": {
+    "AK": {
+      "name": "Alaska",
+      "abbreviation": "AK",
+      "fips": "02",
+      "entity_type": "state",
+      "party": "Republican",
+      "winner": "Donald J. Trump",
+      "harris_votes": 140026,
+      "trump_votes": 184458
+    },
+    "AL": {
+      "name": "Alabama",
+      "abbreviation": "AL",
+      "fips": "01",
+      "entity_type": "state",
+      "party": "Republican",
+      "winner": "Donald J. Trump",
+      "harris_votes": 772412,
+      "trump_votes": 1462616
+    },
+    "AR": {
+      "name": "Arkansas",
+      "abbreviation": "AR",
+      "fips": "05",
+      "entity_type": "state",
+      "party": "Republican",
+      "winner": "Donald J. Trump",
+      "harris_votes": 396905,
+      "trump_votes": 759241
+    },
+    "AZ": {
+      "name": "Arizona",
+      "abbreviation": "AZ",
+      "fips": "04",
+      "entity_type": "state",
+      "party": "Republican",
+      "winner": "Donald J. Trump",
+      "harris_votes": 1582860,
+      "trump_votes": 1770242
+    },
+    "CA": {
+      "name": "California",
+      "abbreviation": "CA",
+      "fips": "06",
+      "entity_type": "state",
+      "party": "Democratic",
+      "winner": "Kamala D. Harris",
+      "harris_votes": 9276179,
+      "trump_votes": 6081697
+    },
+    "CO": {
+      "name": "Colorado",
+      "abbreviation": "CO",
+      "fips": "08",
+      "entity_type": "state",
+      "party": "Democratic",
+      "winner": "Kamala D. Harris",
+      "harris_votes": 1728159,
+      "trump_votes": 1377441
+    },
+    "CT": {
+      "name": "Connecticut",
+      "abbreviation": "CT",
+      "fips": "09",
+      "entity_type": "state",
+      "party": "Democratic",
+      "winner": "Kamala D. Harris",
+      "harris_votes": 992053,
+      "trump_votes": 736918
+    },
+    "DC": {
+      "name": "District of Columbia",
+      "abbreviation": "DC",
+      "fips": "11",
+      "entity_type": "federal_district",
+      "party": "Democratic",
+      "winner": "Kamala D. Harris",
+      "harris_votes": 294185,
+      "trump_votes": 21076
+    },
+    "DE": {
+      "name": "Delaware",
+      "abbreviation": "DE",
+      "fips": "10",
+      "entity_type": "state",
+      "party": "Democratic",
+      "winner": "Kamala D. Harris",
+      "harris_votes": 289758,
+      "trump_votes": 214351
+    },
+    "FL": {
+      "name": "Florida",
+      "abbreviation": "FL",
+      "fips": "12",
+      "entity_type": "state",
+      "party": "Republican",
+      "winner": "Donald J. Trump",
+      "harris_votes": 4683038,
+      "trump_votes": 6110125
+    },
+    "GA": {
+      "name": "Georgia",
+      "abbreviation": "GA",
+      "fips": "13",
+      "entity_type": "state",
+      "party": "Republican",
+      "winner": "Donald J. Trump",
+      "harris_votes": 2548017,
+      "trump_votes": 2663117
+    },
+    "HI": {
+      "name": "Hawaii",
+      "abbreviation": "HI",
+      "fips": "15",
+      "entity_type": "state",
+      "party": "Democratic",
+      "winner": "Kamala D. Harris",
+      "harris_votes": 313044,
+      "trump_votes": 193661
+    },
+    "IA": {
+      "name": "Iowa",
+      "abbreviation": "IA",
+      "fips": "19",
+      "entity_type": "state",
+      "party": "Republican",
+      "winner": "Donald J. Trump",
+      "harris_votes": 707278,
+      "trump_votes": 927019
+    },
+    "ID": {
+      "name": "Idaho",
+      "abbreviation": "ID",
+      "fips": "16",
+      "entity_type": "state",
+      "party": "Republican",
+      "winner": "Donald J. Trump",
+      "harris_votes": 274972,
+      "trump_votes": 605246
+    },
+    "IL": {
+      "name": "Illinois",
+      "abbreviation": "IL",
+      "fips": "17",
+      "entity_type": "state",
+      "party": "Democratic",
+      "winner": "Kamala D. Harris",
+      "harris_votes": 3062863,
+      "trump_votes": 2449079
+    },
+    "IN": {
+      "name": "Indiana",
+      "abbreviation": "IN",
+      "fips": "18",
+      "entity_type": "state",
+      "party": "Republican",
+      "winner": "Donald J. Trump",
+      "harris_votes": 1163603,
+      "trump_votes": 1720347
+    },
+    "KS": {
+      "name": "Kansas",
+      "abbreviation": "KS",
+      "fips": "20",
+      "entity_type": "state",
+      "party": "Republican",
+      "winner": "Donald J. Trump",
+      "harris_votes": 544853,
+      "trump_votes": 758802
+    },
+    "KY": {
+      "name": "Kentucky",
+      "abbreviation": "KY",
+      "fips": "21",
+      "entity_type": "state",
+      "party": "Republican",
+      "winner": "Donald J. Trump",
+      "harris_votes": 704043,
+      "trump_votes": 1337494
+    },
+    "LA": {
+      "name": "Louisiana",
+      "abbreviation": "LA",
+      "fips": "22",
+      "entity_type": "state",
+      "party": "Republican",
+      "winner": "Donald J. Trump",
+      "harris_votes": 766870,
+      "trump_votes": 1208505
+    },
+    "MA": {
+      "name": "Massachusetts",
+      "abbreviation": "MA",
+      "fips": "25",
+      "entity_type": "state",
+      "party": "Democratic",
+      "winner": "Kamala D. Harris",
+      "harris_votes": 2126518,
+      "trump_votes": 1251303
+    },
+    "MD": {
+      "name": "Maryland",
+      "abbreviation": "MD",
+      "fips": "24",
+      "entity_type": "state",
+      "party": "Democratic",
+      "winner": "Kamala D. Harris",
+      "harris_votes": 1902577,
+      "trump_votes": 1035550
+    },
+    "ME": {
+      "name": "Maine",
+      "abbreviation": "ME",
+      "fips": "23",
+      "entity_type": "state",
+      "party": "Democratic",
+      "winner": "Kamala D. Harris",
+      "harris_votes": 435652,
+      "trump_votes": 377977
+    },
+    "MI": {
+      "name": "Michigan",
+      "abbreviation": "MI",
+      "fips": "26",
+      "entity_type": "state",
+      "party": "Republican",
+      "winner": "Donald J. Trump",
+      "harris_votes": 2736533,
+      "trump_votes": 2816636
+    },
+    "MN": {
+      "name": "Minnesota",
+      "abbreviation": "MN",
+      "fips": "27",
+      "entity_type": "state",
+      "party": "Democratic",
+      "winner": "Kamala D. Harris",
+      "harris_votes": 1656979,
+      "trump_votes": 1519032
+    },
+    "MO": {
+      "name": "Missouri",
+      "abbreviation": "MO",
+      "fips": "29",
+      "entity_type": "state",
+      "party": "Republican",
+      "winner": "Donald J. Trump",
+      "harris_votes": 1200599,
+      "trump_votes": 1751986
+    },
+    "MS": {
+      "name": "Mississippi",
+      "abbreviation": "MS",
+      "fips": "28",
+      "entity_type": "state",
+      "party": "Republican",
+      "winner": "Donald J. Trump",
+      "harris_votes": 466668,
+      "trump_votes": 747744
+    },
+    "MT": {
+      "name": "Montana",
+      "abbreviation": "MT",
+      "fips": "30",
+      "entity_type": "state",
+      "party": "Republican",
+      "winner": "Donald J. Trump",
+      "harris_votes": 231906,
+      "trump_votes": 352079
+    },
+    "NC": {
+      "name": "North Carolina",
+      "abbreviation": "NC",
+      "fips": "37",
+      "entity_type": "state",
+      "party": "Republican",
+      "winner": "Donald J. Trump",
+      "harris_votes": 2715375,
+      "trump_votes": 2898423
+    },
+    "ND": {
+      "name": "North Dakota",
+      "abbreviation": "ND",
+      "fips": "38",
+      "entity_type": "state",
+      "party": "Republican",
+      "winner": "Donald J. Trump",
+      "harris_votes": 112327,
+      "trump_votes": 246505
+    },
+    "NE": {
+      "name": "Nebraska",
+      "abbreviation": "NE",
+      "fips": "31",
+      "entity_type": "state",
+      "party": "Republican",
+      "winner": "Donald J. Trump",
+      "harris_votes": 369995,
+      "trump_votes": 564816
+    },
+    "NH": {
+      "name": "New Hampshire",
+      "abbreviation": "NH",
+      "fips": "33",
+      "entity_type": "state",
+      "party": "Democratic",
+      "winner": "Kamala D. Harris",
+      "harris_votes": 418488,
+      "trump_votes": 395523
+    },
+    "NJ": {
+      "name": "New Jersey",
+      "abbreviation": "NJ",
+      "fips": "34",
+      "entity_type": "state",
+      "party": "Democratic",
+      "winner": "Kamala D. Harris",
+      "harris_votes": 2220713,
+      "trump_votes": 1968215
+    },
+    "NM": {
+      "name": "New Mexico",
+      "abbreviation": "NM",
+      "fips": "35",
+      "entity_type": "state",
+      "party": "Democratic",
+      "winner": "Kamala D. Harris",
+      "harris_votes": 478802,
+      "trump_votes": 423391
+    },
+    "NV": {
+      "name": "Nevada",
+      "abbreviation": "NV",
+      "fips": "32",
+      "entity_type": "state",
+      "party": "Republican",
+      "winner": "Donald J. Trump",
+      "harris_votes": 705197,
+      "trump_votes": 751205
+    },
+    "NY": {
+      "name": "New York",
+      "abbreviation": "NY",
+      "fips": "36",
+      "entity_type": "state",
+      "party": "Democratic",
+      "winner": "Kamala D. Harris",
+      "harris_votes": 4619195,
+      "trump_votes": 3578899
+    },
+    "OH": {
+      "name": "Ohio",
+      "abbreviation": "OH",
+      "fips": "39",
+      "entity_type": "state",
+      "party": "Republican",
+      "winner": "Donald J. Trump",
+      "harris_votes": 2533699,
+      "trump_votes": 3180116
+    },
+    "OK": {
+      "name": "Oklahoma",
+      "abbreviation": "OK",
+      "fips": "40",
+      "entity_type": "state",
+      "party": "Republican",
+      "winner": "Donald J. Trump",
+      "harris_votes": 499599,
+      "trump_votes": 1036213
+    },
+    "OR": {
+      "name": "Oregon",
+      "abbreviation": "OR",
+      "fips": "41",
+      "entity_type": "state",
+      "party": "Democratic",
+      "winner": "Kamala D. Harris",
+      "harris_votes": 1240600,
+      "trump_votes": 919480
+    },
+    "PA": {
+      "name": "Pennsylvania",
+      "abbreviation": "PA",
+      "fips": "42",
+      "entity_type": "state",
+      "party": "Republican",
+      "winner": "Donald J. Trump",
+      "harris_votes": 3423042,
+      "trump_votes": 3543308
+    },
+    "RI": {
+      "name": "Rhode Island",
+      "abbreviation": "RI",
+      "fips": "44",
+      "entity_type": "state",
+      "party": "Democratic",
+      "winner": "Kamala D. Harris",
+      "harris_votes": 285156,
+      "trump_votes": 214406
+    },
+    "SC": {
+      "name": "South Carolina",
+      "abbreviation": "SC",
+      "fips": "45",
+      "entity_type": "state",
+      "party": "Republican",
+      "winner": "Donald J. Trump",
+      "harris_votes": 1028452,
+      "trump_votes": 1483747
+    },
+    "SD": {
+      "name": "South Dakota",
+      "abbreviation": "SD",
+      "fips": "46",
+      "entity_type": "state",
+      "party": "Republican",
+      "winner": "Donald J. Trump",
+      "harris_votes": 146859,
+      "trump_votes": 272081
+    },
+    "TN": {
+      "name": "Tennessee",
+      "abbreviation": "TN",
+      "fips": "47",
+      "entity_type": "state",
+      "party": "Republican",
+      "winner": "Donald J. Trump",
+      "harris_votes": 1056265,
+      "trump_votes": 1966865
+    },
+    "TX": {
+      "name": "Texas",
+      "abbreviation": "TX",
+      "fips": "48",
+      "entity_type": "state",
+      "party": "Republican",
+      "winner": "Donald J. Trump",
+      "harris_votes": 4835250,
+      "trump_votes": 6393597
+    },
+    "UT": {
+      "name": "Utah",
+      "abbreviation": "UT",
+      "fips": "49",
+      "entity_type": "state",
+      "party": "Republican",
+      "winner": "Donald J. Trump",
+      "harris_votes": 562566,
+      "trump_votes": 883818
+    },
+    "VA": {
+      "name": "Virginia",
+      "abbreviation": "VA",
+      "fips": "51",
+      "entity_type": "state",
+      "party": "Democratic",
+      "winner": "Kamala D. Harris",
+      "harris_votes": 2333778,
+      "trump_votes": 2074097
+    },
+    "VT": {
+      "name": "Vermont",
+      "abbreviation": "VT",
+      "fips": "50",
+      "entity_type": "state",
+      "party": "Democratic",
+      "winner": "Kamala D. Harris",
+      "harris_votes": 235791,
+      "trump_votes": 119395
+    },
+    "WA": {
+      "name": "Washington",
+      "abbreviation": "WA",
+      "fips": "53",
+      "entity_type": "state",
+      "party": "Democratic",
+      "winner": "Kamala D. Harris",
+      "harris_votes": 2245849,
+      "trump_votes": 1530923
+    },
+    "WI": {
+      "name": "Wisconsin",
+      "abbreviation": "WI",
+      "fips": "55",
+      "entity_type": "state",
+      "party": "Republican",
+      "winner": "Donald J. Trump",
+      "harris_votes": 1668229,
+      "trump_votes": 1697626
+    },
+    "WV": {
+      "name": "West Virginia",
+      "abbreviation": "WV",
+      "fips": "54",
+      "entity_type": "state",
+      "party": "Republican",
+      "winner": "Donald J. Trump",
+      "harris_votes": 214309,
+      "trump_votes": 533556
+    },
+    "WY": {
+      "name": "Wyoming",
+      "abbreviation": "WY",
+      "fips": "56",
+      "entity_type": "state",
+      "party": "Republican",
+      "winner": "Donald J. Trump",
+      "harris_votes": 69527,
+      "trump_votes": 192633
+    }
+  }
+}

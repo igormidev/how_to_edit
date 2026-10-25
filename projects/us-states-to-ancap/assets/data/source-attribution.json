@@ -1,0 +1,62 @@
+{
+  "retrieved_date": "2026-10-25",
+  "boundaries": {
+    "publisher": "U.S. Census Bureau",
+    "title": "2024 Cartographic Boundary File, State and Equivalent Entities for United States, 1:500,000",
+    "catalog_url": "https://www.census.gov/geographies/mapping-files/2024/geo/carto-boundary-file.html",
+    "download_url": "https://www2.census.gov/geo/tiger/GENZ2024/shp/cb_2024_us_state_500k.zip",
+    "documentation_url": "https://www.census.gov/geographies/mapping-files/time-series/geo/cartographic-boundary.html",
+    "raw_file": "cb_2024_us_state_500k.zip",
+    "raw_sha256": "3e81cbb6cf5f60d9b01ef3e730afa14d61ce5f784252a0b33a696135e71447bc",
+    "derived_file": "us-states-2024.geojson",
+    "source_crs": "EPSG:4269 / NAD83 geographic coordinates",
+    "coordinate_processing": "Shapefile-to-GeoJSON conversion only; no rounding, simplification, smoothing, hand redrawing, or AI generation.",
+    "precision_limits": "The Census cartographic dataset is itself an officially simplified 1:500,000 representation for small-scale mapping, not a cadastral survey or a legal boundary determination. A projected map and raster video cannot be literally exact at all physical scales.",
+    "included": "All 50 states and District of Columbia (51 features); all source polygon parts and islands retained.",
+    "excluded_territories": [
+      {
+        "abbreviation": "AS",
+        "name": "American Samoa",
+        "fips": "60"
+      },
+      {
+        "abbreviation": "GU",
+        "name": "Guam",
+        "fips": "66"
+      },
+      {
+        "abbreviation": "MP",
+        "name": "Commonwealth of the Northern Mariana Islands",
+        "fips": "69"
+      },
+      {
+        "abbreviation": "PR",
+        "name": "Puerto Rico",
+        "fips": "72"
+      },
+      {
+        "abbreviation": "VI",
+        "name": "United States Virgin Islands",
+        "fips": "78"
+      }
+    ],
+    "rendering_caution": "Composite projections may clip the Aleutian Islands or northwestern Hawaiian Islands. Use unclipped separate fitted Alaska and Hawaii projections to retain the complete state geometry."
+  },
+  "political_classification": {
+    "publisher": "Federal Election Commission",
+    "title": "Official 2024 Presidential General Election Results",
+    "source_data": "State Elections Offices",
+    "download_url": "https://www.fec.gov/documents/5644/2024presgeresults.pdf",
+    "crosscheck_url": "https://www.archives.gov/electoral-college/2024",
+    "raw_file": "2024presgeresults.pdf",
+    "raw_sha256": "c99a431e08cb779002ebecb373cee54745c3b691df2f0b322f36688364f6d823",
+    "derived_file": "state-winners-2024.json",
+    "method": "Extract Harris and Trump statewide popular-vote totals from PDF pages 3 and 5, verify 51 records and national candidate totals, then compare vote counts per state.",
+    "verified_totals": {
+      "harris": 75017613,
+      "trump": 77302580,
+      "states": 50,
+      "federal_districts": 1
+    }
+  }
+}

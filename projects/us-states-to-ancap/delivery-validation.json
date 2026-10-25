@@ -1,0 +1,81 @@
+{
+  "date": "2026-10-25",
+  "hyperframes_version": "0.8.198",
+  "strict_check_passed": true,
+  "browser_was_run": true,
+  "audits": {
+    "lint": {
+      "ok": true,
+      "errorCount": 0,
+      "warningCount": 0
+    },
+    "runtime": {
+      "ok": true,
+      "errorCount": 0,
+      "warningCount": 0
+    },
+    "layout": {
+      "ok": true,
+      "errorCount": 0,
+      "warningCount": 0
+    },
+    "motion": {
+      "ok": true,
+      "errorCount": 0,
+      "warningCount": 0
+    },
+    "contrast": {
+      "ok": true,
+      "errorCount": 0,
+      "warningCount": 0
+    },
+    "craft": {
+      "ok": true,
+      "errorCount": 0,
+      "warningCount": 0
+    }
+  },
+  "source_geometry": {
+    "states": 50,
+    "federal_districts": 1,
+    "coordinates": 278217,
+    "closed_polygon_rings": 1407,
+    "source_geometry_mismatches": 0,
+    "missing_svg_rings": 0
+  },
+  "decoded_video": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "codec_name": "h264",
+        "width": 1920,
+        "height": 1080,
+        "pix_fmt": "yuv420p",
+        "r_frame_rate": "24/1",
+        "avg_frame_rate": "24/1",
+        "duration": "12.000000",
+        "nb_read_frames": "288"
+      }
+    ],
+    "format": {
+      "duration": "12.000000",
+      "size": "5128719"
+    }
+  },
+  "sha256": "a119d608927c2842151de638d59a6969c6d52bb5d2c264ca885386949c6a2b81",
+  "visual_review_times_seconds": [
+    2,
+    6.5,
+    11.9
+  ],
+  "initial_party_counts_states_only": {
+    "Democratic": 19,
+    "Republican": 31
+  },
+  "color_transition_seconds": [
+    4.5,
+    8.5
+  ],
+  "yellow_legend_start_seconds": 4.5
+}

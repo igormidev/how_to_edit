@@ -1,0 +1,56 @@
+{
+  "width": 1920,
+  "height": 1080,
+  "fps": 24,
+  "duration": 8,
+  "background": "transparent",
+  "population": 15,
+  "selectedIndices": [
+    5,
+    6,
+    7,
+    8,
+    9
+  ],
+  "neutral": "#343837",
+  "highlight": {
+    "start": 1.8,
+    "end": 2.56
+  },
+  "initial": {
+    "x": [
+      274,
+      372,
+      470,
+      568,
+      666,
+      764,
+      862,
+      960,
+      1058,
+      1156,
+      1254,
+      1352,
+      1450,
+      1548,
+      1646
+    ],
+    "y": 540
+  },
+  "split": {
+    "start": 3.2,
+    "end": 4.99,
+    "fullGroupY": 280,
+    "fullGroupScale": 0.82,
+    "subsetY": 768,
+    "subsetScale": 1.22,
+    "subsetX": [
+      660,
+      810,
+      960,
+      1110,
+      1260
+    ]
+  },
+  "fullGroupPreserved": true
+}

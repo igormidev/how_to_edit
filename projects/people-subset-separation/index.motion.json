@@ -1,0 +1,11 @@
+{
+  "duration": 8,
+  "assertions": [
+    {"kind":"appearsBy","selector":"#crowd-person-0","bySec":0.6},
+    {"kind":"appearsBy","selector":"#crowd-person-14","bySec":1},
+    {"kind":"appearsBy","selector":"#subset-person-4","bySec":3.6},
+    {"kind":"before","a":"#crowd-person-7","b":"#subset-person-2"},
+    {"kind":"staysInFrame","selector":"#full-group"},
+    {"kind":"staysInFrame","selector":"#selected-group"}
+  ]
+}

@@ -3,10 +3,10 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "npx --yes hyperframes@0.8.198 preview",
-    "check": "npx --yes hyperframes@0.8.198 check",
-    "render": "npx --yes hyperframes@0.8.198 render --format mov --fps 24 --quality delivery --output deliverables/people-subset-transparent.mov",
-    "publish": "npx --yes hyperframes@0.8.198 publish",
+    "dev": "npx --yes hyperframes@0.8.203 preview",
+    "check": "npx --yes hyperframes@0.8.203 check",
+    "render": "npx --yes hyperframes@0.8.203 render --format mov --fps 24 --quality delivery --output deliverables/people-subset-3-rows-transparent.mov",
+    "publish": "npx --yes hyperframes@0.8.203 publish",
     "build": "node scripts/build.mjs"
   }
 }

@@ -3,3 +3,6 @@ node_modules/
 .thumbnails/
 validation/
 renders/
+
+# Large ProRes delivery is generated locally and copied to Downloads.
+/deliverables/people-subset-3-rows-transparent.mov
